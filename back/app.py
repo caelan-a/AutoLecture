@@ -1,12 +1,14 @@
 import User
-from User import *
-
 import settings
 import LinkUtil
 from LectureHandler import LectureHandler, Lecture, Week
 import LmsNavigator
 import download
 import os.path
+
+USER_SAVE_PATH = "save\\user.pkl"
+
+os.path.join(os.path.dirname(__file__))
 
 __author__ = "Caelan Anderson"
 __copyright__ = "Copyright 2017"
@@ -18,12 +20,12 @@ __status__ = "Production"
 
 class AutoLectureApp():	
 	def isNewUser(self):
-		fname = "save\\user.pkl"
+		fname = USER_SAVE_PATH
 		exists = os.path.isfile(fname) 
 		return not exists
 
 	def loadUser(self):
-		self.user = pickle.load(open("save\\user.pkl", "rb"))
+		self.user = pickle.load(open(USER_SAVE_PATH, "rb"))
 
 	def printLecturesForSubject(self,i):
 		for l in settings.userData.subjects[i].lectureCalender.getLecturesFromWeeks(settings.userData.subjects[1].lectureCalender.weeks_scheduled):

@@ -1,11 +1,11 @@
 import sys
 import datetime
-sys.path.insert(0,'C:\\Users\\cande\\Google Drive\\Projects\\AutoLecture v1.31\\AutoLecture')
-#sys.path.insert(0,'C:\\Users\\Caelan\\Google Drive\\Projects\\AutoLecture v1.31\\AutoLecture')
 import AutoLecture.settings as settings
 import AutoLecture.LmsNavigator as LmsNavigator
 import AutoLecture.UniversityTools as UniversityTools
 from AutoLecture.app import AutoLectureApp
+
+os.path.join(os.path.dirname(__file__))
 
 autolecture_app = AutoLectureApp()
 #autolecture_app.user.setUniversity("University of Melbourne", UniversityTools.universities.get("University of Melbourne"))

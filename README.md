@@ -13,7 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-Step 1: In cmd prompt "sudo apt-get install requirements.txt"
+Step 1: In cmd prompt ```sudo apt-get install requirements.txt```
 
 Step 2: Build and run main.py
 
