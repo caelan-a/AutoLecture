@@ -1,4 +1,4 @@
-# Project Title
+# AutoLecture
 
 Software package which downloads and organises lectures for university.
 
