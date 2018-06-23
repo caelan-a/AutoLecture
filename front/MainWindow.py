@@ -1,9 +1,10 @@
 import sys
-sys.path.insert(0,'C:\\Users\\cande\\Google Drive\\Projects\\AutoLecture v1.31\\GUI')
 from PySide.QtCore import *
 from PySide.QtGui import *
 
-from GUI.Assets import Assets
+import front.Assets as Assets
+
+BUTTON_STYLE_SHEET_PATH = "front/button.stylesheet"
 
 class Window(QWidget):
 	def switchScreen(self, next):
@@ -18,9 +19,9 @@ class Window(QWidget):
 		QWidget.__init__(self)
 
 		global assets
-		assets = Assets()
+		assets = Assets.Assets()
 		
-		sshFile="GUI/button.stylesheet"
+		sshFile=BUTTON_STYLE_SHEET_PATH
 		with open(sshFile,"r") as fh: 
 			self.styleSheet = fh.read()
 
@@ -30,7 +31,7 @@ class Window(QWidget):
 		QApplication.setStyle(QStyleFactory.create('Cleanlooks'))
         
 		self.setMinimumSize(QSize(1600,1000))
-		self.setWindowIcon(QIcon('GUI/images/logo_taskbar.png'))  
+		self.setWindowIcon(QIcon('resources/icons/logo_taskbar.png'))  
 		self.setWindowTitle(' ')
 
 		self.layout = QVBoxLayout()
@@ -75,9 +76,9 @@ class UserFrame(QWidget):
 		self.buttonBox.addButton(QPushButton("Yes",self),QMessageBox.AcceptRole)
 		self.buttonBox.setText("	Are you sure?")
 		self.buttonBox.setWindowTitle(' ')
-		self.buttonBox.setWindowIcon(QIcon('GUI/images/logo_taskbar.png'))  
+		self.buttonBox.setWindowIcon(QIcon('resources/icons/logo_taskbar.png'))  
 		self.buttonBox.setIcon(QMessageBox.NoIcon)
-		sshFile="GUI/button.stylesheet"
+		sshFile=BUTTON_STYLE_SHEET_PATH
 		with open(sshFile,"r") as fh:
 			self.styleSheet = fh.read()
 		self.buttonBox.setStyleSheet(self.styleSheet)
@@ -182,7 +183,7 @@ class MenuScreen(QWidget):
 		self.label_title.setAlignment(Qt.AlignCenter)
 		self.layout.addWidget(self.label_title)
 
-		pixmap = QPixmap("GUI/images/icon_lectures1")
+		pixmap = QPixmap("resources/icons/icon_lectures1")
 		icon = QIcon(pixmap)
 		self.button_lectures = QPushButton("")
 		self.button_lectures.setObjectName('menuIcon')
@@ -190,7 +191,7 @@ class MenuScreen(QWidget):
 		self.button_lectures.setIconSize(QSize(150,150));
 		self.hbox.addWidget(self.button_lectures)
 
-		pixmap = QPixmap("GUI/images/icon_settings")
+		pixmap = QPixmap("resources/icons/icon_settings")
 		icon = QIcon(pixmap)
 		self.button_settings = QPushButton("")
 		self.button_settings.setObjectName('menuIcon')
@@ -348,7 +349,7 @@ class NavigationBar(QWidget):
 
 		self.button_back = QPushButton()
 		self.button_back.setObjectName('backButton')
-		self.pixmap_back = QPixmap("GUI/images/icon_backbutton.png")
+		self.pixmap_back = QPixmap("resources/icons/icon_backbutton.png")
 		self.icon_back = QIcon(self.pixmap_back)
 		self.button_back.setIcon(self.icon_back)
 		self.button_back.setIconSize(QSize(80,80));
@@ -504,7 +505,7 @@ class LoadingFrame(QWidget):
 
 		self.label_loading_anim = QLabel()
 		self.label_loading_anim.setStyleSheet('background:transparent;')
-		self.movie_loading_anim = QMovie("GUI/images/loading1.gif")
+		self.movie_loading_anim = QMovie("resources/icons/loading1.gif")
 		self.movie_loading_anim.setSpeed(400)
 		self.label_loading_anim.setMovie(self.movie_loading_anim)
 
