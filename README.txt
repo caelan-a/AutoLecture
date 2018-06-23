@@ -13,19 +13,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Step 1: In cmd prompt "sudo apt-get install requirements.txt"
 
-Say what the step will be
+Step 2: Build and run main.py
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
+Step 3: Play around with GUI :)
 
 End with an example of getting some data out of the system or using it for a little demo
 
