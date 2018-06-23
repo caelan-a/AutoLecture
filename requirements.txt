@@ -1,2 +1,5 @@
 pickle
 pyside
+urllib
+datetime
+selenium
