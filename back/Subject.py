@@ -8,13 +8,12 @@ import settings
 import LectureHandler
 
 class Subject(object):
-	def __init__(self, title, semester, year, code, course_id, timetable = []):
+	def __init__(self, title, semester, year, code, course_id):
 		self.TITLE = title
 		self.CODE = code
 		self.semester = semester
 		self.year = year
 		self.course_id = course_id
-		self.timetable = timetable
 		self.lectureHandler = []
 
 	def createLectureCalender(self):

@@ -2,6 +2,7 @@ import download
 import pickle
 import datetime
 import os.path
+import UniversityTools
 
 import LmsNavigator
 from Subject import Subject
@@ -11,14 +12,13 @@ class User(object):
 		self.username = ""
 		self.password = ""
 		self.university = ""
-		self.uni_info = {}	#	Contains calender datesl
+		self.uni_info = {}	#	Contains calender dates
 		self.folder_path = ""
 
 		self.subjects = {}
 		self.missing_subjects = {}
 
 		self.timetable = []
-		self.subject_info = [] #	Delete (only for testing)
 
 	def getCurrentTerm(self):
 		current_date = datetime.datetime.now().date()
@@ -44,9 +44,9 @@ class User(object):
 	def setFolderPath(self, path):
 		self.folder_path = path
 
-	def setUniversity(self, university, uni_info):
+	def setUniversity(self, university):
 		self.university = university
-		self.uni_info = uni_info
+		self.uni_info = UniversityTools.universities[university]
 
 	def getUniInfo(self):
 		return self.uni_info

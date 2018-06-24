@@ -6,9 +6,15 @@ import download
 
 import LmsNavigator
 
-class TimeTable():
+
+class Schedule():
 	def __init__(self):
 		self.times = []
+
+	def setTermInfo(self, weeks_in_term, term_start_date, term_end_date):
+		self.weeks_in_term = weeks_in_term
+		self.term_start_date = term_start_date
+		self.term_end_date = term_end_date
 
 	def setFreqInfo(days_per_week, lecs_per_day):
 		self.days_per_week = days_per_week
@@ -239,19 +245,37 @@ class LectureHandler():
 		self.subject = subject
 		self.date_last_downloaded = 0
 		self.date_last_indexed = 0 # Last lecture to have been retrieved using LmsNavigator.getOnlineLectures
-		self.timetable = TimeTable()
+		self.schedule = Schedule()
 		self.lecture_list = LmsNavigator.getOnlineLectures(self.subject, self.date_last_indexed)
 		self.initial_week = self.lecture_list[0].date.isocalendar()[1]
 
 
 class Lecture():
-	def __init__(self, url, date, time):
-		self.url = url
+	def __init__(self, date, time):
+		self.url = ""
+		self.download_path = ""
+
+		self.available = False
 		self.downloaded = False
+		
 		self.date = date
 		self.time = time
+		
 		self.nameofday = self.date.strftime("%A")
 		self.dayofweek = date.weekday()
+
 		self.week_num = 0
-		self.day_num = 0
+		self.day_num = 0 # Lecture number of week
+		self.setChronology(date)
+
+	def setAvailableInfo(self, url):
+		self.available = True
+		self.url = url
+
+	def setDownloadedInfo(self, download_path):
+		self.downloaded = True
+		self.download_path = download_path
+
+	# def setChronology(self, term_start_date, term_end_date, date):
+		
 

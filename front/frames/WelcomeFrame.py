@@ -4,7 +4,9 @@ from PySide.QtGui import *
 class WelcomeFrame(QWidget):
 	@Slot()
 	def start(self):
-	    self.parent().switchSubFrame(self.parent().login_frame)
+		self.parent().parent().backend_app.setUniversity(self.uni_list.currentText())
+		print(self.uni_list.currentText())
+		self.parent().switchSubFrame(self.parent().login_frame)
 	
 	def __init__(self):
 		QWidget.__init__(self)

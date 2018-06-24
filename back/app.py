@@ -32,6 +32,15 @@ class AutoLectureApp():
 		for l in settings.userData.subjects[i].lectureCalender.getLecturesFromWeeks(settings.userData.subjects[1].lectureCalender.weeks_scheduled):
 			print("Week {}, Lecture {}".format(l.week_num, l.day_num))
 
+	def setLoginInfo(self, username, password):
+		self.user.setLoginInfo(username, password)
+
+	def getLoginInfo(self):
+		return [self.user.username, self.user.password]
+
+	def setUniversity(self, uni):
+		self.user.setUniversity(uni)
+		
 	def startBrowser(self):
 		settings.startBrowser()
 

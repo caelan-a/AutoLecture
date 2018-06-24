@@ -4,8 +4,10 @@ from PySide.QtGui import *
 class LoginFrame(QWidget):
 	@Slot()
 	def getLoginInfo(self):
-	    print("Username: {}\nPassword: {}".format(self.lineedit_login.text(),self.lineedit_password.text()))
-	    self.parent().switchSubFrame(self.parent().loading_frame)
+		self.parent().parent().backend_app.setLoginInfo(self.lineedit_login.text(),self.lineedit_password.text())
+		login_info = self.parent().parent().backend_app.getLoginInfo()
+		print("Username: {}\nPassword: {}".format(login_info[0], login_info[1]))
+		self.parent().switchSubFrame(self.parent().loading_frame)
 	
 	def __init__(self):
 		QWidget.__init__(self)

@@ -16,13 +16,16 @@ class Window(QWidget):
 		self.active_screen.hide()
 		next.show()
 		self.active_screen = next
+
 	def setInitialScreen(self,screen):
 		self.active_screen = screen
 		self.switchScreen(screen)
 
-	def __init__(self):
+	def __init__(self, backend_app):
 		QWidget.__init__(self)
 
+		self.backend_app = backend_app
+		
 		# Setup Assets
 		assets = Assets()
 
@@ -32,12 +35,11 @@ class Window(QWidget):
 
 		self.setStyleSheet(self.styleSheet)
 
-
 		QApplication.setStyle(QStyleFactory.create('Cleanlooks'))
         
 		self.setMinimumSize(QSize(1600,1000))
 		self.setWindowIcon(QIcon('resources/icons/logo_taskbar.png'))  
-		self.setWindowTitle(' ')
+		self.setWindowTitle(' ') 
 
 		self.layout = QVBoxLayout()
 		self.layout.setContentsMargins(0,0,0,0)
