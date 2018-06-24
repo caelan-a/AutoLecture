@@ -1,6 +1,9 @@
-import sys
 from PySide.QtCore import *
 from PySide.QtGui import *
+
+from frames.UserFrame import UserFrame
+from frames.SubjectFrame import SubjectFrame
+from frames.NavigationFrame import NavigationBar
 
 class SettingsScreen(QWidget):
 	def switchSubFrame(self, next):
@@ -12,7 +15,7 @@ class SettingsScreen(QWidget):
 		self.active_subframe = initial
 		initial.show()
 
-	def __init__(self):
+	def __init__(self, assets):
 		QWidget.__init__(self)
 		self.frame_user = UserFrame(self)
 		self.frame_user.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Expanding)
@@ -26,7 +29,7 @@ class SettingsScreen(QWidget):
 		self.layout = QHBoxLayout()
 		self.layout.setContentsMargins(0,0,0,0)
 
-		self.nav_bar = NavigationBar(self)
+		self.nav_bar = NavigationBar()
 		self.nav_bar.setSizePolicy(QSizePolicy.Preferred,QSizePolicy.Preferred)
 		self.nav_bar.addStretch()
 		self.nav_bar.addItem("My Account", self.switchSubFrame, self.frame_user, selected=True)

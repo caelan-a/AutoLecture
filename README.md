@@ -61,7 +61,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Caelan Anderson** (https://192.168.1.199/caelana)
+* **Caelan Anderson** (http://192.168.1.199/caelana)
 
 
 ## License

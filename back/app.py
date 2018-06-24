@@ -1,14 +1,15 @@
-import User
+import os, sys
+sys.path.append(os.path.dirname(__file__))
+
+from User import User
 import settings
 import LinkUtil
 from LectureHandler import LectureHandler, Lecture, Week
 import LmsNavigator
 import download
-import os.path
 
 USER_SAVE_PATH = "save\\user.pkl"
 
-os.path.join(os.path.dirname(__file__))
 
 __author__ = "Caelan Anderson"
 __copyright__ = "Copyright 2017"

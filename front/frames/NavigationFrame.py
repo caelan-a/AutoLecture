@@ -1,4 +1,3 @@
-import sys
 from PySide.QtCore import *
 from PySide.QtGui import *
 
@@ -42,7 +41,7 @@ class NavigationBar(QWidget):
 
 		self.button_back = QPushButton()
 		self.button_back.setObjectName('backButton')
-		self.pixmap_back = QPixmap("images/icon_backbutton.png")
+		self.pixmap_back = QPixmap("resources/icons/icon_backbutton.png")
 		self.icon_back = QIcon(self.pixmap_back)
 		self.button_back.setIcon(self.icon_back)
 		self.button_back.setIconSize(QSize(80,80));
@@ -59,3 +58,4 @@ class NavigationBar(QWidget):
 		self.setAutoFillBackground(True)
 		self.setPalette(QColor('#2F9599'))
 		self.setLayout(self.layout)
+
