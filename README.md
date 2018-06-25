@@ -10,6 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - Selenium (for automated web browsing)
 - Pickle (for serialising data)
+- ChromeDriver.exe in backend folder. Always have latest from http://chromedriver.chromium.org/downloads
 
 ### Installing
 
