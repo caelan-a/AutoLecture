@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(__file__))
 from User import User
 import settings
 import LinkUtil
-from LectureHandler import LectureHandler, Lecture, Week
+from LectureHandler import LectureHandler, Lecture
 import LmsNavigator
 import download
 
@@ -40,7 +40,7 @@ class AutoLectureApp():
 
 	def setUniversity(self, uni):
 		self.user.setUniversity(uni)
-		
+
 	def startBrowser(self):
 		settings.startBrowser()
 

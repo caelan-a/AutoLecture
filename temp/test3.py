@@ -11,3 +11,5 @@ with requests.Session() as s:
     # An authorised request.
     r = s.get('https://app.lms.unimelb.edu.au/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_115_1')
     print (r.content)
+
+    
