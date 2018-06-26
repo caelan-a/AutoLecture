@@ -23,6 +23,7 @@ def containsPreviousSubjects(current_year, current_sem, subject_info):
 		if subject_info[subject].get("semester") != current_sem or subject_info[subject].get("year") != current_year:
 			return True
 	return False
+	
 print(subject_info)
 print()
 print("Does contain previous subjects: {}".format(containsPreviousSubjects(2018, 2, subject_info)))
