@@ -7,6 +7,7 @@ import LinkUtil
 from LectureHandler import LectureHandler, Lecture
 import LmsNavigator
 import download
+import pickle
 
 USER_SAVE_PATH = "save\\user.pkl"
 

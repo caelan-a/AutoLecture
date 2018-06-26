@@ -12,11 +12,14 @@ class User(object):
 		self.username = ""
 		self.password = ""
 		self.university = ""
-		self.uni_info = {}	#	Contains calender dates
+		self.uni_info = UniversityTools.uni_info	#	Contains calender dates
 		self.folder_path = ""
 
 		self.subjects = {}
 		self.missing_subjects = {}
+
+		self.current_year = datetime.datetime.now().date().year
+		self.current_term = self.getCurrentTerm()
 
 		self.timetable = []
 
@@ -29,7 +32,8 @@ class User(object):
 			return 1	#	1 = Semester 1
 		elif current_date < self.uni_info.get("semester_2_exam_end").date():
 			return 2  # 2 = Semester 2
-		#	Insert 4 = Winter =
+		elif current_date > self.uni_info.get("semester_2_exam_end").date():
+			return 3
 
 	def getCurrentYear(self):
 		return datetime.datetime.now().year
@@ -60,22 +64,5 @@ class User(object):
 	def createSubject(self, title, semester, year, code, course_id, timetable = []):
 		new_subject = Subject(title, semester, year, code, course_id, time_table = timetable)
 		self.subjects[code] = new_subject
-
-	#	Batch methods
-	def updateLectureCalenders(self):
-		print("Finding new lectures for:\n")
-		LmsNavigator.login(self.user, self.password)
-		for s in settings.userData.subjects:
-			print("{}\n".format(s.TITLE))
-			cal = s.lectureHandler
-			cal.updateLectureList()
-		self.save()
-
-	def downloadNewLectures(self):
-		print("Downloading new lectures...\n")
-		for s in settings.userData.subjects:
-			cal = s.lectureHandler
-			cal.downloadNewLectures()
-		print("All lectures up to date\n") 
 
 

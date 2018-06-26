@@ -29,7 +29,7 @@ class LoadingFrame(QWidget):
 		self.layout = QVBoxLayout()
 		self.layout.setAlignment(Qt.AlignHCenter)
 
-		# Setup animation
+		# Setup animation 
 		self.label_loading_anim = QLabel()
 		self.label_loading_anim.setStyleSheet('background:transparent;')
 		loading_anim_movie.setSpeed(400)
