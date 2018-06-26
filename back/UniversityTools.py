@@ -11,6 +11,32 @@ page_content.encode('utf-8')
 content_list = page_content.split('\n')
 content_list = content_list[getDateLabel(23)]]
 """
+
+"""
+state_name = ""
+university_name = ""
+universities = {}
+uni_info = {}
+index_count = 0
+
+for s in content_list:
+	if s.isupper(): # If string is state
+		state_name = s
+		print(s)
+	elif s.isalpha(): # If string is university name
+		universities[getDateLabel(un)]versity_name] = uni_info
+		univeristy_name = s
+		uni_info = {}
+		uni_info["state"] = state_name
+		index_count = 0
+	elif s != "-":
+		uni_info[getDateLabel(ge)]DateLabel(index_count)] = s
+		index_count += 1
+
+print(universities)
+"""
+
+
 def getDateLabel(index):
 	if index == 0:
 		return "summer_start_date"
@@ -49,6 +75,14 @@ def getDateLabel(index):
 	elif index == 17:
 		return "semester_2_exam_end"
 
+def calculateWeeksInTerm(d1, d2):
+	# Calculates distance between mondays of each date's week 
+	monday1 = (d1 - datetime.timedelta(days=d1.weekday()))
+	monday2 = (d2 - datetime.timedelta(days=d2.weekday()))
+
+	weeks = int((monday2 - monday1).days / 7)
+	return weeks
+
 universities = {}
 uni_info = {}
 
@@ -73,26 +107,3 @@ uni_info[getDateLabel(17)] = datetime.datetime.strptime("16 Nov 18", "%d %b %y")
 
 universities["University of Melbourne"] = uni_info
 
-"""
-state_name = ""
-university_name = ""
-universities = {}
-uni_info = {}
-index_count = 0
-
-for s in content_list:
-	if s.isupper(): # If string is state
-		state_name = s
-		print(s)
-	elif s.isalpha(): # If string is university name
-		universities[getDateLabel(un)]versity_name] = uni_info
-		univeristy_name = s
-		uni_info = {}
-		uni_info["state"] = state_name
-		index_count = 0
-	elif s != "-":
-		uni_info[getDateLabel(ge)]DateLabel(index_count)] = s
-		index_count += 1
-
-print(universities)
-"""

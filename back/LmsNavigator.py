@@ -1,6 +1,9 @@
+import sys, os
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+
+sys.path.append(os.path.dirname(__file__))
 
 import settings
 import datetime
@@ -143,8 +146,8 @@ def getLmsSubjectInfo():
 
 		code_year_sem = code_title[0].split('_')
 		subject_info["code"] = code_year_sem[0]
-		subject_info["year"] = code_year_sem[1]
-		subject_info["semester"] = code_year_sem[2][-1]
+		subject_info["year"] = int(code_year_sem[1])
+		subject_info["semester"] = int(code_year_sem[2][-1])
 
 		title = code_title[1]  
 		subject_info["title"] = title[1:] # Remove space at start of string

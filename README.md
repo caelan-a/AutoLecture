@@ -10,6 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - Selenium (for automated web browsing)
 - Pickle (for serialising data)
+- ChromeDriver.exe in backend folder. Always have latest from http://chromedriver.chromium.org/downloads
 
 ### Installing
 
@@ -53,7 +54,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Talk to Caelan.
 
 ## Versioning
 
@@ -61,16 +62,13 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Caelan Anderson** (http://192.168.1.199/caelana)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Copyright (c) 2017 Caelan Anderson
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Loading animation from some dude

@@ -1,14 +1,16 @@
-import User
+import os, sys
+sys.path.append(os.path.dirname(__file__))
+
+from User import User
 import settings
 import LinkUtil
-from LectureHandler import LectureHandler, Lecture, Week
+from LectureHandler import LectureHandler, Lecture
 import LmsNavigator
 import download
-import os.path
+import pickle
 
 USER_SAVE_PATH = "save\\user.pkl"
 
-os.path.join(os.path.dirname(__file__))
 
 __author__ = "Caelan Anderson"
 __copyright__ = "Copyright 2017"
@@ -30,6 +32,15 @@ class AutoLectureApp():
 	def printLecturesForSubject(self,i):
 		for l in settings.userData.subjects[i].lectureCalender.getLecturesFromWeeks(settings.userData.subjects[1].lectureCalender.weeks_scheduled):
 			print("Week {}, Lecture {}".format(l.week_num, l.day_num))
+
+	def setLoginInfo(self, username, password):
+		self.user.setLoginInfo(username, password)
+
+	def getLoginInfo(self):
+		return [self.user.username, self.user.password]
+
+	def setUniversity(self, uni):
+		self.user.setUniversity(uni)
 
 	def startBrowser(self):
 		settings.startBrowser()
