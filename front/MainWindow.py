@@ -37,7 +37,7 @@ class Window(QWidget):
 
 		QApplication.setStyle(QStyleFactory.create('Cleanlooks'))
         
-		self.setMinimumSize(QSize(1200,800))
+		self.setMinimumSize(QSize(1600,1000))
 		self.setWindowIcon(QIcon('resources/icons/logo_taskbar.png'))  
 		self.setWindowTitle(' ') 
 
