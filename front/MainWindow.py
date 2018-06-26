@@ -37,7 +37,7 @@ class Window(QWidget):
 
 		QApplication.setStyle(QStyleFactory.create('Cleanlooks'))
         
-		self.setMinimumSize(QSize(1200,800))
+		self.setMinimumSize(QSize(1600,1000))
 		self.setWindowIcon(QIcon('resources/icons/logo_taskbar.png'))  
 		self.setWindowTitle(' ') 
 
@@ -48,9 +48,11 @@ class Window(QWidget):
 		self.screen_setup = SetupScreen(assets)
 		self.screen_settings = SettingsScreen(assets)
 		self.screen_menu = MenuScreen(assets)
+
 		self.layout.addWidget(self.screen_setup)
 		self.layout.addWidget(self.screen_settings)
 		self.layout.addWidget(self.screen_menu)
+		
 		self.screen_setup.hide()
 		self.screen_settings.hide()
 		self.screen_menu.hide()

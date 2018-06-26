@@ -27,15 +27,15 @@ class SetupScreen(QWidget):
 		self.login_frame = LoginFrame()
 		self.welcome_frame = WelcomeFrame()
 		self.loading_frame = LoadingFrame(assets.movie_loading_anim)
-		self.subjectConfirmation_frame = SubjectConfirmationFrame(self, assets)
+		self.subject_confirmation_frame = SubjectConfirmationFrame(self, assets)
 
 		self.login_frame.hide()
 		self.welcome_frame.hide()
 		self.loading_frame.hide()
-		self.subjectConfirmation_frame.hide()
+		self.subject_confirmation_frame.hide()
 
 		self.active_subframe = self.welcome_frame
-		self.switchSubFrame(self.welcome_frame)
+		self.switchSubFrame(self.subject_confirmation_frame)
 		####
 
 		self.layout = QVBoxLayout()
@@ -45,6 +45,6 @@ class SetupScreen(QWidget):
 		self.layout.addWidget(self.login_frame)		# Bottom frame
 		self.layout.addWidget(self.welcome_frame)
 		self.layout.addWidget(self.loading_frame)
-		self.layout.addWidget(self.subjectConfirmation_frame)
+		self.layout.addWidget(self.subject_confirmation_frame)
 		
 		self.setLayout(self.layout)

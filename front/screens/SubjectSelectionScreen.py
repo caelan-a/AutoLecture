@@ -2,7 +2,7 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 
 class SubjectSelectionScreen(QWidget):
-	def __init__(self):
+	def __init__(self,assets):
 		QWidget.__init__(self)
 		self.setMinimumSize(QSize(800, 800))
 		self.setWindowTitle('Autolecture')
