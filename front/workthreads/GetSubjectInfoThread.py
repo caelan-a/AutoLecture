@@ -14,7 +14,7 @@ class GetSubjectInfoThread(QThread):
                 self.new_loading_action_signal.sig.connect(set_loading_text_function)
 
         def run(self):
-                end = time.time()+10
+                end = time.time()+5
                 new_loading_action_text = 'Fetching subjects from LMS'
                 self.new_loading_action_signal.sig.emit(new_loading_action_text)
                 while self.exiting==False:
@@ -23,6 +23,6 @@ class GetSubjectInfoThread(QThread):
                         time.sleep(1)
                         now = time.time()
                         if now>=end:
-                                self.exiting=True
+                                self.exiting=True 
                 new_loading_action_text = 'Subjects have been fetched'
                 self.new_loading_action_signal.sig.emit(new_loading_action_text)
