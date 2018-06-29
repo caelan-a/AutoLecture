@@ -11,14 +11,6 @@ class SubjectSelectionScreen(QWidget):
 		self.list = QListWidget(self)
 		self.list.setMinimumSize(QSize(600,600))
 
-
-
-	def supported_image_extensions():
-		''' Get the image file extensions that can be read. '''
-		formats = QImageReader().supportedImageFormats()
-		# Convert the QByteArrays to strings
-		return [str(fmt) for fmt in formats]
-	
 	def run(self):
         # Show the form
 		self.show()

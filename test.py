@@ -8,15 +8,20 @@ from back.app import AutoLectureApp
 os.path.join(os.path.dirname(__file__))
 
 autolecture_app = AutoLectureApp()
-# autolecture_app.user.setUniversity("University of Melbourne", UniversityTools.universities.get("University of Melbourne"))
-autolecture_app.user.setLoginInfo("caelana", "cael1998")
-autolecture_app.startBrowser()
-# LmsNavigator.goToTimeTable(autolecture_app.user.username,autolecture_app.user.password)
-# autolecture_app.user.timetable = LmsNavigator.getOnlineTimeTable() 
+autolecture_app.loadUser()
 
-LmsNavigator.goToLms(autolecture_app.user.username,autolecture_app.user.password)
-autolecture_app.user.subject_info = LmsNavigator.getLmsSubjectInfo()
-subject_info = LmsNavigator.getLmsSubjectInfo()
+user = autolecture_app.user
+
+# autolecture_app.user.setUniversity("University of Melbourne", UniversityTools.universities.get("University of Melbourne"))
+# autolecture_app.user.setLoginInfo("caelana", "cael1998")
+# autolecture_app.startBrowser()
+# LmsNavigator.goToLms(autolecture_app.user.username,autolecture_app.user.password)
+# autolecture_app.user.subject_info = LmsNavigator.getLmsSubjectInfo()
+# subject_info = LmsNavigator.getLmsSubjectInfo()
+# autolecture_app.user.subject_info = subject_info
+# autolecture_app.user.save()
+
+subject_info = user.subject_info
 
 def containsPreviousSubjects(current_year, current_sem, subject_info):
 	for subject in subject_info:
@@ -24,8 +29,11 @@ def containsPreviousSubjects(current_year, current_sem, subject_info):
 			return True
 	return False
 	
-print(subject_info)
-print()
-print("Does contain previous subjects: {}".format(containsPreviousSubjects(2018, 2, subject_info)))
 
-autolecture_app.closeBrowser()
+print("{} \n\t{}\n\tSemester {}\n".format(user.username, user.current_year, user.current_term))
+for subject in user.subject_info:
+	print("{} \n\t {} \n\t Semester {} \n\t  ".format(user.subject_info[subject]["title"],user.subject_info[subject]["year"], user.subject_info[subject]["semester"]))
+
+print("Does contain in previous subjects: {}".format(containsPreviousSubjects(2018, 2, user.subject_info)))
+
+# autolecture_app.closeBrowser()

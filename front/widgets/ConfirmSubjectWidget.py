@@ -18,14 +18,14 @@ class confirmSubjectWidget(QWidget):
 
 	def __init__(self, title, semester, year, code):
 		QWidget.__init__(self)
-		self.confirm_bool = False
-		self.layout = QHBoxLayout()
-		letter_count = len(title +semester + year + code)
-		spacing = int((60 - letter_count) / 2)
-		if spacing % 2 != 0:
-			spacing -= 1
-		self.title = QLabel(title + (spacing * " ") + "Semester " + semester + " " + year + (spacing) *  " " + code )
-		self.title.setObjectName("rounded")
+		#self.confirm_bool = False
+		self.layout = QVBoxLayout()
+		#letter_count = len(title +semester + year + code)
+		#spacing = int((60 - letter_count) / 2)
+		#if spacing % 2 != 0:
+		#	spacing -= 1
+		#self.title = QLabel(title + (spacing * " ") + "Semester " + semester + " " + year + (spacing) *  " " + code )
+		#self.title.setObjectName("rounded")
 		#self.semester = QLabel("Semester " + semester)
 		#self.semester.setObjectName("rounded")
 		#self.year = QLabel(year)
@@ -42,7 +42,7 @@ class confirmSubjectWidget(QWidget):
 		self.layout.addStretch()
 		self.layout.addStretch()
 		self.layout.addStretch()
-		self.layout.addWidget(self.title)
+		#self.layout.addWidget(self.title)
 		#self.layout.addWidget(self.code)
 		#self.layout.addWidget(self.semester)
 		#self.layout.addWidget(self.year)

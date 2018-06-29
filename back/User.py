@@ -21,6 +21,8 @@ class User(object):
 		self.current_year = datetime.datetime.now().date().year
 		self.current_term = self.getCurrentTerm()
 
+		self.subject_info = [] # delete, only for testing
+
 		self.timetable = []
 
 	def getCurrentTerm(self):
@@ -28,11 +30,11 @@ class User(object):
 
 		if current_date < self.uni_info.get("semester_1_start_date").date():
 			return 0 #	0 = Summer
-		elif  current_date < self.uni_info.get("semester_2_start_date").date():
+		elif  current_date < self.uni_info.get("semester_1_end_date").date():
 			return 1	#	1 = Semester 1
-		elif current_date < self.uni_info.get("semester_2_exam_end").date():
+		elif current_date < self.uni_info.get("semester_2_end_date").date():
 			return 2  # 2 = Semester 2
-		elif current_date > self.uni_info.get("semester_2_exam_end").date():
+		elif current_date > self.uni_info.get("semester_2_end_date").date():
 			return 3
 
 	def getCurrentYear(self):

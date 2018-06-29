@@ -18,7 +18,9 @@ window = Window(backend_app)
 if(backend_app.isNewUser):
 	window.setInitialScreen(window.screen_setup)
 else:
-	window.setInitialScreen(window.screen_menu)
+	window.setInitialScreen(window.screen_setup)
+
+print(backend_app.user.getCurrentTerm())
 
 window.run(qt_app)
 

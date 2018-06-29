@@ -30,6 +30,7 @@ class LoginFrame(QWidget):
 		self.vbox_input.addWidget(self.lineedit_password)
 
 		self.pushbutton_login = QPushButton("Login")
+
 		self.pushbutton_login.clicked.connect(self.getLoginInfo)
 
 		self.layout.addLayout(self.vbox_input)
