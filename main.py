@@ -12,7 +12,10 @@ backend_app = AutoLectureApp()
 
 # Setup frontend
 qt_app = QApplication(sys.argv)
-window = Window(backend_app) 
+screen_resolution = qt_app.desktop().screenGeometry()
+width, height = screen_resolution.width(), screen_resolution.height()
+
+window = Window(backend_app, width, height) 
 
 # Set initial screen
 if(backend_app.isNewUser):

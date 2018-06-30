@@ -1,0 +1,22 @@
+#subjectFrame {
+	background-color: #fff;
+    border-radius: 0.5em;
+    padding: 2em;
+    min-width: 18em;
+    max-width: 18em;
+}
+
+#title {
+    font: 18px;
+    color: rgb(100,100,100);
+}
+
+#semester {
+	color: grey;
+	font: 12px;
+}
+
+#year {
+	color: grey;
+	font: 12px;
+}

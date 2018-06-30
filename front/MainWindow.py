@@ -10,6 +10,8 @@ from screens.MenuScreen import MenuScreen
 from Assets import Assets
 
 BUTTON_STYLE_SHEET_PATH = "front/stylesheets/button.stylesheet"
+WIDTH_SCALE_FACTOR = 3/5
+HEIGHT_SCALE_FACTOR = 3/4
 
 class Window(QWidget):
 	def switchScreen(self, next):
@@ -21,7 +23,7 @@ class Window(QWidget):
 		self.active_screen = screen
 		self.switchScreen(screen)
 
-	def __init__(self, backend_app):
+	def __init__(self, backend_app, width, height):
 		QWidget.__init__(self)
 
 		self.backend_app = backend_app
@@ -37,7 +39,8 @@ class Window(QWidget):
 
 		QApplication.setStyle(QStyleFactory.create('Cleanlooks'))
         
-		self.setMinimumSize(QSize(1600,1000))
+
+		self.setMinimumSize(QSize(WIDTH_SCALE_FACTOR*width,HEIGHT_SCALE_FACTOR*height))
 		self.setWindowIcon(QIcon('resources/icons/logo_taskbar.png'))  
 		self.setWindowTitle(' ') 
 
