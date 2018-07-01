@@ -31,12 +31,14 @@ class confirmSubjectWidget(QWidget):
 		QWidget.__init__(self)
 		self.confirm_bool = False
 
-		self.main_layout = QVBoxLayout(self)
+		# Size policy
+
 		self.layout = QVBoxLayout()
 
 		self.frame = QPushButton()
-		self.frame.setFixedSize(100,250)
 		self.frame.setObjectName("subjectFrame")
+		self.frame.setMinimumSize(100,250)
+		self.main_layout = QVBoxLayout(self)
 
 		sshFile=BUTTON_STYLE_SHEET_PATH
 		with open(sshFile,"r") as fh: 
@@ -44,11 +46,11 @@ class confirmSubjectWidget(QWidget):
 
 		self.setStyleSheet(self.styleSheet)
 
-		self.title = QLabel(title)
+		self.title = QLabel(title, self)
 		self.title.setObjectName("title")
-		self.semester = QLabel("Semester " + semester)
+		self.semester = QLabel("Semester " + semester, self)
 		self.semester.setObjectName("semester")
-		self.year = QLabel(year)
+		self.year = QLabel(year, self)
 		self.year.setObjectName("year")
 
 		self.shadow = QGraphicsDropShadowEffect(self)

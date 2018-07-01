@@ -2,10 +2,7 @@
 	background-color: #fff;
     border-radius: 0.5em;
     padding: 2em;
-    min-width: 12em;
-    max-width: 18em;
-    min-height: 12em;
-    max-height: 18em;
+    
 }
 
 #title {

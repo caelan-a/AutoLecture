@@ -98,11 +98,10 @@ QPushButton#listButton::Hover {
 
 QPushButton {
     color: white;
+    font: 14px;
     background-color: #2F9599;
     border-radius: 0.5em;
     padding: 2em;
-    min-width: 30em;
-    max-width: 30em;
     outline: 0;
 }
 
@@ -111,7 +110,7 @@ QPushButton#nextButton {
     background-color: #2F9599;
     border-radius: 0.5em;  
     outline: 0;
-    max-width: 5px;
+    padding: 1em;
     font: 14px;
 }
 

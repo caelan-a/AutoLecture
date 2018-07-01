@@ -10,7 +10,7 @@ from screens.MenuScreen import MenuScreen
 from Assets import Assets
 
 BUTTON_STYLE_SHEET_PATH = "front/stylesheets/button.stylesheet"
-WIDTH_SCALE_FACTOR = 3/5
+WIDTH_SCALE_FACTOR = 3/4
 HEIGHT_SCALE_FACTOR = 3/4
 
 class Window(QWidget):
