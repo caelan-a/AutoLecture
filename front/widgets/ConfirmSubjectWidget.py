@@ -53,7 +53,7 @@ class confirmSubjectWidget(QWidget):
 
 		self.shadow = QGraphicsDropShadowEffect(self)
 		self.shadow.setBlurRadius(3)
-		self.shadow.setOffset(0,1)
+		self.shadow.setOffset(1,5)
 		self.shadow.setColor(QColor(0,0,0,100))
 
 		self.frame.setGraphicsEffect(self.shadow)

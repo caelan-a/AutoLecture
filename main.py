@@ -26,4 +26,3 @@ else:
 print(backend_app.user.getCurrentTerm())
 
 window.run(qt_app)
-

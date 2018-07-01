@@ -1,4 +1,3 @@
-
 QMenuBar {
 	background-color: grey;
 }
@@ -12,11 +11,23 @@ QComboBox  {
     text-align: center;
 }
 
+QPushButton#showMore {
+    background-color: #F0F0F0;
+    outline: none;
+}
+
 QLabel#settingsTitle {
     font: bold 50px;
     padding-left: 0.1em;
     color: white;
 }
+
+QLabel#greyText {
+    color: grey;
+    line-height: 0.1;
+    font: 16px;
+}
+
 
 QPushButton#criticalButton {
     background-color: rgb(246,114,128);

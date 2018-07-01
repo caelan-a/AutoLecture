@@ -2,8 +2,10 @@
 	background-color: #fff;
     border-radius: 0.5em;
     padding: 2em;
-    min-width: 18em;
+    min-width: 12em;
     max-width: 18em;
+    min-height: 12em;
+    max-height: 18em;
 }
 
 #title {
@@ -19,4 +21,9 @@
 #year {
 	color: grey;
 	font: 12px;
+}
+
+QPushButton#showMore {
+    background-color: rgb(100,0,100);
+    outline: none;
 }
