@@ -4,6 +4,9 @@ from PySide.QtGui import *
 BUTTON_STYLE_SHEET_PATH = "front/stylesheets/subject_tile.stylesheet"
 
 class confirmSubjectWidget(QWidget):
+	def resizeEvent(self, event):
+		self.button_confirm.setIconSize(QSize(self.button_confirm.parent().size().width()-150, self.button_confirm.parent().size().height()-150));
+
 	def setShadow(self, shadow, x_off, y_off, strength):
 		shadow.setBlurRadius(strength)
 		shadow.setOffset(x_off,y_off)
@@ -11,20 +14,17 @@ class confirmSubjectWidget(QWidget):
 	@Slot()
 	def toggleSelected(self):
 		if self.confirm_bool == True:
-			#self.setShadow(self.shadow, 0, 1, 3)
-			self.shadow.setColor(QColor(0,0,0,100))
+			self.shadow.setColor(QColor(0,0,0,100))	
 			self.shadow_anim.setStartValue(15)
 			self.shadow_anim.setEndValue(3)
 			self.shadow_anim.start()
-			print("unselected")
 			self.confirm_bool = False
 		else:
-			#self.setShadow(self.shadow, 2, 4, 5)
+			#	Colour gives glow
 			self.shadow.setColor(QColor(47, 149, 153,250))
 			self.shadow_anim.setStartValue(3)
 			self.shadow_anim.setEndValue(15)
 			self.shadow_anim.start()
-			print("selected")
 			self.confirm_bool = True
 
 	def __init__(self, title, semester, year, code, subject_icon):
@@ -37,7 +37,8 @@ class confirmSubjectWidget(QWidget):
 
 		self.frame = QPushButton()
 		self.frame.setObjectName("subjectFrame")
-		self.frame.setMinimumSize(100,250)
+		
+		self.frame.setMinimumSize(50,250)
 		self.main_layout = QVBoxLayout(self)
 
 		sshFile=BUTTON_STYLE_SHEET_PATH
