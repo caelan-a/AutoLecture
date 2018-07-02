@@ -3,9 +3,21 @@ from PySide.QtGui import *
 
 BUTTON_STYLE_SHEET_PATH = "front/stylesheets/subject_tile.stylesheet"
 
+BIG_TILE_SIZE = [250,250]
+SMALL_TILE_SIZE = [150,150]
+
+TILE_NON_GLOW_COLOUR = QColor(0,0,0,100)
+TILE_GLOW_COLOUR = QColor(47, 149, 153,250)
+NON_GLOW_STRENGTH = 3
+GLOW_STRENGTH = 15
+
+TILE_ICON_PADDING_FACTOR = 2.5
+
+
 class confirmSubjectWidget(QWidget):
 	def resizeEvent(self, event):
-		self.button_confirm.setIconSize(QSize(self.button_confirm.parent().size().width()-150, self.button_confirm.parent().size().height()-150));
+		# Resize icon if subject tiles change size
+		self.button_confirm.setIconSize(QSize(self.button_confirm.parent().size().width()/TILE_ICON_PADDING_FACTOR, self.button_confirm.parent().size().height()/TILE_ICON_PADDING_FACTOR));
 
 	def setShadow(self, shadow, x_off, y_off, strength):
 		shadow.setBlurRadius(strength)
@@ -14,20 +26,20 @@ class confirmSubjectWidget(QWidget):
 	@Slot()
 	def toggleSelected(self):
 		if self.confirm_bool == True:
-			self.shadow.setColor(QColor(0,0,0,100))	
-			self.shadow_anim.setStartValue(15)
-			self.shadow_anim.setEndValue(3)
+			self.shadow.setColor(TILE_NON_GLOW_COLOUR)
+			self.shadow_anim.setStartValue(GLOW_STRENGTH)
+			self.shadow_anim.setEndValue(NON_GLOW_STRENGTH)
 			self.shadow_anim.start()
 			self.confirm_bool = False
 		else:
 			#	Colour gives glow
-			self.shadow.setColor(QColor(47, 149, 153,250))
-			self.shadow_anim.setStartValue(3)
-			self.shadow_anim.setEndValue(15)
+			self.shadow.setColor(TILE_GLOW_COLOUR)
+			self.shadow_anim.setStartValue(NON_GLOW_STRENGTH)
+			self.shadow_anim.setEndValue(GLOW_STRENGTH)
 			self.shadow_anim.start()
 			self.confirm_bool = True
 
-	def __init__(self, title, semester, year, code, subject_icon):
+	def __init__(self, title, semester, year, code, subject_icon, size):
 		QWidget.__init__(self)
 		self.confirm_bool = False
 
@@ -38,7 +50,9 @@ class confirmSubjectWidget(QWidget):
 		self.frame = QPushButton()
 		self.frame.setObjectName("subjectFrame")
 		
-		self.frame.setMinimumSize(50,250)
+		self.policy = QSizePolicy.Maximum
+		self.setSizePolicy(self.policy,self.policy)
+
 		self.main_layout = QVBoxLayout(self)
 
 		sshFile=BUTTON_STYLE_SHEET_PATH
@@ -48,11 +62,20 @@ class confirmSubjectWidget(QWidget):
 		self.setStyleSheet(self.styleSheet)
 
 		self.title = QLabel(title, self)
-		self.title.setObjectName("title")
 		self.semester = QLabel("Semester " + semester, self)
-		self.semester.setObjectName("semester")
 		self.year = QLabel(year, self)
 		self.year.setObjectName("year")
+
+		if size == "big":
+			self.frame.setMinimumSize(BIG_TILE_SIZE[0], BIG_TILE_SIZE[1])
+			self.title.setObjectName("title_big")
+			self.semester.setObjectName("subtext_big")
+			self.year.setObjectName("subtext_big")
+		else:
+			self.frame.setMinimumSize(SMALL_TILE_SIZE[0], SMALL_TILE_SIZE[1])
+			self.title.setObjectName("title_small")
+			self.semester.setObjectName("subtext_small")
+			self.year.setObjectName("subtext_small")
 
 		self.shadow = QGraphicsDropShadowEffect(self)
 		self.shadow.setBlurRadius(3)
@@ -68,7 +91,6 @@ class confirmSubjectWidget(QWidget):
 		self.button_confirm = QPushButton()
 		self.button_confirm.setIcon(subject_icon)
 		self.button_confirm.setObjectName("tickButton")
-		self.button_confirm.setIconSize(QSize(100,100));
 		self.button_confirm.clicked.connect(self.toggleSelected)
 
 		self.frame.clicked.connect(self.toggleSelected)

@@ -5,19 +5,24 @@
     
 }
 
-#title {
+#title_big {
     font: 18px;
     color: rgb(100,100,100);
 }
 
-#semester {
+#subtext_big {
+    font: 12px;
 	color: grey;
-	font: 12px;
 }
 
-#year {
-	color: grey;
-	font: 12px;
+#title_small {
+    font: 14px;
+    color: rgb(100,100,100);
+}
+
+#subtext_small {
+    font: 8px;
+    color: grey;
 }
 
 QPushButton#showMore {
