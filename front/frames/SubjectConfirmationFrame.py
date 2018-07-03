@@ -39,7 +39,6 @@ class SubjectConfirmationFrame(QWidget):
 		self.button_showmore.startFloatAnimation()
 
 	def showEvent(self, event):
-		print("show widget")
 		self.button_showmore.startFloatAnimation()
 
 	def __init__(self, parent, assets):

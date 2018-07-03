@@ -1,0 +1,677 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"has",
+				"has_subordinating_conjunction"
+			],
+			[
+				"pa",
+				"parsed_sentence〔variable〕"
+			],
+			[
+				"knowl",
+				"knowledge_pairs"
+			],
+			[
+				"lexe",
+				"lexemes"
+			],
+			[
+				"is",
+				"is_anthropomorphic"
+			],
+			[
+				"an",
+				"anthropomorphic_nouns"
+			],
+			[
+				"fema",
+				"female_pronouns"
+			],
+			[
+				"male",
+				"male_pronouns"
+			],
+			[
+				"ca",
+				"category"
+			],
+			[
+				"get",
+				"getSyntacticCategory"
+			],
+			[
+				"extra",
+				"extractKnowledgePairs"
+			],
+			[
+				"knol",
+				"knowledge_pairs"
+			],
+			[
+				"know",
+				"knowledge_pairs"
+			],
+			[
+				"Knowl",
+				"KnowledgePair"
+			],
+			[
+				"prep",
+				"prepositioned_object_phrase"
+			],
+			[
+				"objec",
+				"object_noun_phrase"
+			],
+			[
+				"subjec",
+				"subject_noun_phrase〔variable〕"
+			],
+			[
+				"row",
+				"row_layouts"
+			],
+			[
+				"pas",
+				"past_subject_tile_set"
+			],
+			[
+				"past",
+				"past_subjects"
+			],
+			[
+				"Subje",
+				"SubjectTileSet"
+			],
+			[
+				"subject",
+				"subject_widgets"
+			],
+			[
+				"num",
+				"num_rows"
+			],
+			[
+				"subj",
+				"subject_widgets"
+			],
+			[
+				"Next",
+				"NextButton"
+			],
+			[
+				"set",
+				"setSizePolicy"
+			],
+			[
+				"curre",
+				"current_subjects_row"
+			],
+			[
+				"sub",
+				"subjectConfirmation_frame"
+			],
+			[
+				"lect",
+				"lectures_to_dl"
+			],
+			[
+				"date",
+				"date_str"
+			],
+			[
+				"find_",
+				"find_element_by_class_name"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.py",
+			"settings":
+			{
+				"buffer_size": 625,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "front/widgets/ShowMoreWidget.py",
+			"settings":
+			{
+				"buffer_size": 1251,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "AutoLecture.sublime-project",
+			"settings":
+			{
+				"buffer_size": 410,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/User/new_g++.sublime-build",
+					""
+				],
+				[
+					"Packages/User/new_g++.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"push",
+				"git: push"
+			],
+			[
+				"pus",
+				"git: push"
+			],
+			[
+				"bran",
+				"git: branch"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"stage",
+				"git: quick stage"
+			],
+			[
+				"bra",
+				"git: branch"
+			],
+			[
+				"mer",
+				"git: merge"
+			],
+			[
+				"sta",
+				"git: stash save"
+			],
+			[
+				"check",
+				"git: checkout remote branch as local"
+			],
+			[
+				"ch",
+				"git: checkout"
+			],
+			[
+				"stas",
+				"git: stash save"
+			],
+			[
+				"branch",
+				"git: branch"
+			],
+			[
+				"pul",
+				"git: pull"
+			],
+			[
+				"pull",
+				"git: pull"
+			],
+			[
+				"quick ",
+				"git: quick stage current file and commit"
+			],
+			[
+				"repo",
+				"gitlab: open repo"
+			],
+			[
+				"open",
+				"gitlab: open repo"
+			],
+			[
+				"com",
+				"git: commit"
+			],
+			[
+				"clone",
+				"git: clone"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"packag",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 536.0
+	},
+	"console":
+	{
+		"height": 698.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Caelan/Documents/Projects/AutoLecture"
+	],
+	"file_history":
+	[
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/AutoLecture.sublime-project",
+		"/C/Users/Caelan/Documents/Projects/Pythius/back/KnowledgePair.py",
+		"/C/Users/Caelan/Documents/Projects/Pythius/README.md",
+		"/C/Users/Caelan/Documents/Projects/Pythius/back/Lexeme.py",
+		"/C/Users/Caelan/Documents/Projects/Pythius/back/POSTagDictionary.py",
+		"/C/Users/Caelan/Documents/Projects/Pythius/back/ExtractKnowledgePairs.py",
+		"/C/Users/Caelan/Documents/Projects/Pythius/back/Chunk.py",
+		"/C/Users/Caelan/Documents/Projects/Pythius/back/InformationGroup.py",
+		"/C/Users/Caelan/Documents/Projects/Pythius/test.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/temp/test3.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/screens/SetupScreen.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/widgets/ConfirmSubjectWidget.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/widgets/NextButton.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/main.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/stylesheets/subject_tile.stylesheet",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/stylesheets/colors.txt",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/stylesheets/button.stylesheet",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/MainWindow.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/README.md",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/frames/SubjectConfirmationFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Assets.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/frames/NavigationFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/frames/LoginFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/frames/LoadingFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/widgets/InputFieldWidget.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/widgets/LectureTimesWidget.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/screens/SubjectSelectionScreen.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/screens/SettingsScreen.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/screens/MenuScreen.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/frames/WelcomeFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/frames/UserFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/frames/TitleFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Screens/SubjectSelectionScreen.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Widgets/LectureTimesWidget.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Widgets/InputFieldWidget",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/back/app.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/back/User.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Screens/MenuScreen.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Screens/SettingsScreen.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/SettingsScreen.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Frames/TitleFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Frames/WelcomeFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Frames/SubjectFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Screens/SetupScreen.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Frames/NavigationFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Frames/SubjectConfirmationFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Frames/LoginFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Frames/LoadingFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Widgets/ConfirmSubjectWidget.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/Frames/UserFrame.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/test.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/front/p.py",
+		"/C/Users/Caelan/Documents/Projects/AutoLecture/requirements.txt",
+		"/C/Users/Caelan/Downloads/Artists.py",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture v1.31/GUI/button.stylesheet",
+		"/C/Users/Caelan/Downloads/icon_tick_green.png",
+		"/C/Users/Caelan/Downloads/icon_tick_white.png",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture v1.31/AutoLecture/app.py",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture v1.31/main.py",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture v1.31/GUI/gui.py",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture v1.31/test.py",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture - Copy/_SETUP.txt",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture - Copy/eng_lec.pkl",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture - Copy/settings.py",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture - Copy/download.py",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture - Copy/user_data.pkl",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture/User.py",
+		"/C/Users/Caelan/Google Drive/Projects/AutoLecture/autolecture.py",
+		"/C/Users/Caelan/Desktop/AutoLecture/autolecture.py",
+		"/C/Users/Caelan/Desktop/AutoLecture/user_data.pkl",
+		"/C/Users/Caelan/Desktop/AutoLecture/input.txt",
+		"/C/Users/Caelan/Documents/pyscripts/test1.py",
+		"/C/Users/Caelan/Documents/pyscripts/test.py",
+		"/C/JavaGames/Functions.java",
+		"/C/JavaGames/Calculator.java",
+		"/C/JavaGames/Functions",
+		"/C/JavaGames/Calculator",
+		"/C/JavaGames/Greet.java",
+		"/C/JavaGames/Greeter.java",
+		"/C/Users/Caelan/Documents/game",
+		"/D/Program Files (x86)/Apache2/htdocs/index.php",
+		"/D/Program Files (x86)/Apache2/htdocs/index.html",
+		"/D/Program Files (x86)/Apache2/htdocs/index.html.txt",
+		"/C/Users/Caelan/Documents/Web/index.html",
+		"/C/Users/Caelan/Documents/Web/style.css",
+		"/C/Users/Caelan/Documents/Web/index.php",
+		"/C/dev/Python/py.py",
+		"/C/dev/Python/python.py",
+		"/C/dev/Python/pytest.py",
+		"/C/PythonScripts/test.py",
+		"/D/PythonScripts/test.py",
+		"/C/Users/Caelan/AppData/Roaming/Sublime Text 3/Packages/User/test.py",
+		"/C/Users/Caelan/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/C/Users/Caelan/AppData/Roaming/Sublime Text 3/Packages/User/new_g++.sublime-build",
+		"/C/Users/Caelan/AppData/Roaming/Sublime Text 3/Packages/User/test.cpp",
+		"/C/Program Files/Sublime Text 3/Packages/new_g++.sublime-build",
+		"/C/Program Files/Sublime Text 3/1.cpp",
+		"/C/Program Files/Sublime Text 3/Packages/C++.sublime-package"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"'"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 625,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								477,
+								477
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_savvy.repo_path": "C:\\Users\\Caelan\\Documents\\Projects\\AutoLecture",
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "front/widgets/ShowMoreWidget.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1251,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90,
+								90
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_savvy.repo_path": "C:\\Users\\Caelan\\Documents\\Projects\\AutoLecture",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "AutoLecture.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"git_savvy.repo_path": "C:\\Users\\Caelan\\Documents\\Projects\\AutoLecture",
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 54.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GitSavvy":
+	{
+		"height": 152.0
+	},
+	"output.exec":
+	{
+		"height": 223.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.show_commit_info":
+	{
+		"height": 158.0
+	},
+	"pinned_build_system": "AutoLecture",
+	"project": "AutoLecture.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\Caelan\\Documents\\Projects\\Pythius\\Pythius.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 250.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

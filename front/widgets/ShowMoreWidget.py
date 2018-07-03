@@ -3,9 +3,6 @@ from PySide.QtGui import *
 
 class ShowMoreWidget(QPushButton):
 
-	def print(self):
-		print("SAD")
-
 	def stopFloatAnimation(self):
 		self.height_anim.stop()
 
