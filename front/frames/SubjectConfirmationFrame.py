@@ -1,6 +1,6 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
-
+from FadeWidget import FadeWidget
 from widgets.ConfirmSubjectWidget import confirmSubjectWidget 
 
 from widgets.ShowMoreWidget import ShowMoreWidget 
@@ -58,6 +58,19 @@ class SubjectConfirmationFrame(QWidget):
 		self.label_showmore = QLabel("Show Previous Subjects")
 		self.label_showmore.setObjectName("greyText")
 
+		self.label_current_subjects = QLabel("Current Subjects")
+		self.label_current_subjects.setObjectName("greyText")
+
+		self.label_past_subjects = QLabel("Previous Subjects")
+		self.label_past_subjects.setObjectName("greyText")
+		
+		#	Horizontal line
+		self.line = QFrame()
+		self.line.setObjectName("line")
+		# self.line.setGeometry(QRect(320,150,118,30))
+		self.line.setFrameShape(QFrame.HLine)
+		self.line.setFrameShadow(QFrame.Sunken)
+
 		#	Row for current subjects
 		self.current_subjects_row = QHBoxLayout()
 		self.current_subjects_row.addWidget(confirmSubjectWidget("Linear Algebra", "2", "2017", "MAST10007",assets.icon_subject_icon, "big"))
@@ -69,22 +82,30 @@ class SubjectConfirmationFrame(QWidget):
 		#	Row for past subjects still available on LMS
 
 		self.past_subjects = []
-		for i in range(1, 4):
-			self.past_subjects.append(confirmSubjectWidget("Linguistics", str(i), "2017", "LING2005",assets.icon_subject_icon, "big"))
+		for i in range(1, 7):
+			self.past_subjects.append(confirmSubjectWidget("Linguistics", str(i), "2017", "LING2005",assets.icon_subject_icon, "small"))
 		self.past_subject_tile_set = SubjectTileSet(self.past_subjects, len(self.past_subjects))
 
 		self.layout.addStretch()
 		self.layout.addWidget(self.label_question, 0, Qt.AlignCenter)
 		self.layout.addStretch()
+		# self.layout.addWidget(self.label_current_subjects,0, Qt.AlignCenter)
+		# self.layout.addWidget(self.line)
+		self.layout.addStretch()
 		self.layout.addLayout(self.current_subjects_row)
 		# self.layout.addStretch()
 		# self.layout.addStretch()
-		# self.layout.addStretch()
+		self.layout.addStretch()
+		self.layout.addStretch()
+		self.layout.addStretch()
 		# self.layout.addStretch()
 		# self.layout.addWidget(self.label_showmore, 0, Qt.AlignCenter)
 		# self.layout.addWidget(self.button_showmore, 0, Qt.AlignCenter)
-		# self.layout.addWidget(self.past_subject_tile_set)
+		# self.layout.addWidget(self.line)
+		# self.layout.addWidget(self.label_past_subjects,0, Qt.AlignCenter)
 		self.layout.addStretch()
+		self.layout.addWidget(self.past_subject_tile_set)
+		# self.layout.addStretch()
 		self.layout.addStretch()
 
 		self.layout.addStretch()

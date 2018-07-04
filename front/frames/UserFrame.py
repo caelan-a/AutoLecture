@@ -1,9 +1,11 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
+from FadeWidget import FadeWidget
 
 BUTTON_STYLE_SHEET_PATH = "front/stylesheets/button.stylesheet"
 
 from widgets.InputFieldWidget import InputField
+
 
 class UserFrame(QWidget):
 	def __init__(self, parent):

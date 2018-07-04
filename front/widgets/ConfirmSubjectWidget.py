@@ -3,15 +3,15 @@ from PySide.QtGui import *
 
 BUTTON_STYLE_SHEET_PATH = "front/stylesheets/subject_tile.stylesheet"
 
-BIG_TILE_SIZE = [250,250]
-SMALL_TILE_SIZE = [150,150]
+BIG_TILE_SIZE = [260,200]
+SMALL_TILE_SIZE = [200,150]
 
 TILE_NON_GLOW_COLOUR = QColor(0,0,0,100)
 TILE_GLOW_COLOUR = QColor(47, 149, 153,250)
 NON_GLOW_STRENGTH = 3
 GLOW_STRENGTH = 15
 
-TILE_ICON_PADDING_FACTOR = 2.5
+TILE_ICON_PADDING_FACTOR = 3
 
 
 class confirmSubjectWidget(QWidget):

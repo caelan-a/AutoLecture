@@ -21,7 +21,7 @@
 }
 
 #subtext_small {
-    font: 8px;
+    font: 12px;
     color: grey;
 }
 

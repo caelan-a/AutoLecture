@@ -36,6 +36,7 @@ class SetupScreen(QWidget):
 
 		self.active_subframe = self.welcome_frame
 		self.switchSubFrame(self.subject_confirmation_frame)
+
 		####
 
 		self.layout = QVBoxLayout()

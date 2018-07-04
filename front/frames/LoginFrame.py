@@ -1,7 +1,8 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
+from FadeWidget import FadeWidget
 
-class LoginFrame(QWidget):
+class LoginFrame(FadeWidget):
 	@Slot()
 	def getLoginInfo(self):
 		self.parent().parent().backend_app.setLoginInfo(self.lineedit_login.text(),self.lineedit_password.text())
@@ -10,7 +11,7 @@ class LoginFrame(QWidget):
 		self.parent().switchSubFrame(self.parent().loading_frame)
 	
 	def __init__(self):
-		QWidget.__init__(self)
+		FadeWidget.__init__(self)
 
 		self.layout = QVBoxLayout()
 
