@@ -2,6 +2,7 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 
 from FadeWidget import FadeWidget
+from widgets.NextButton import NextButton
 
 class WelcomeFrame(FadeWidget):
 	@Slot()
@@ -20,7 +21,7 @@ class WelcomeFrame(FadeWidget):
 		self.uni_list.addItems(self.university_names)
 		self.layout.addWidget(self.uni_list,0,Qt.AlignCenter)
 
-		self.pushbutton_login = QPushButton("Start")
+		self.pushbutton_login = NextButton("Start")
 		self.pushbutton_login.clicked.connect(self.start)
 
 		self.layout.addStretch()

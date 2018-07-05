@@ -7,10 +7,11 @@ from screens.SetupScreen import SetupScreen
 from screens.SettingsScreen import SettingsScreen
 from screens.MenuScreen import MenuScreen
 
+from stylesheets.StyleSheets import setStyleSheet
+
 from Assets import Assets
 
-BUTTON_STYLE_SHEET_PATH = "front/stylesheets/button.stylesheet"
-WIDTH_SCALE_FACTOR = 3/4
+WIDTH_SCALE_FACTOR = 13/14
 HEIGHT_SCALE_FACTOR = 3/4
 
 class Window(QWidget):
@@ -31,11 +32,7 @@ class Window(QWidget):
 		# Setup Assets
 		assets = Assets()
 
-		sshFile=BUTTON_STYLE_SHEET_PATH
-		with open(sshFile,"r") as fh: 
-			self.styleSheet = fh.read()
-
-		self.setStyleSheet(self.styleSheet)
+		setStyleSheet(self, "main")
 
 		QApplication.setStyle(QStyleFactory.create('Cleanlooks'))
         

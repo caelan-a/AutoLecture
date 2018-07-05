@@ -28,6 +28,9 @@ QLabel#greyText {
     font: 16px;
 }
 
+QPushButton#nextButton {
+    min-width: 20em;
+}
 
 QPushButton#criticalButton {
     background-color: rgb(246,114,128);

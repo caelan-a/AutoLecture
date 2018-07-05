@@ -2,6 +2,7 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 from FadeWidget import FadeWidget
 from workthreads.GetSubjectInfoThread import GetSubjectInfoThread
+from widgets.NextButton import NextButton
 
 FORM_WIDTH = 800
 
@@ -56,7 +57,7 @@ class LoginFrame(QWidget):
 		self.vbox_input.addWidget(self.lineedit_password)
 
 		#	Login button
-		self.pushbutton_login = QPushButton("Login")
+		self.pushbutton_login = NextButton("Login")
 		self.pushbutton_login.clicked.connect(self.getLoginInfo)
 
 		#	Lay widgets out
