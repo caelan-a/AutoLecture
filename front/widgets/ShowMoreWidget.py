@@ -1,39 +1,39 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 
-class ShowMoreWidget(QPushButton):
-
-	def stopFloatAnimation(self):
-		self.height_anim.stop()
-
-	def startFloatAnimation(self, amplitude=10, duration=4000):
-		self.animation_duration = duration
-		self.animation_amplitude = amplitude
-
-		self.start_pos = self.geometry()
-		self.end_pos = QRect(self.start_pos.x(), self.start_pos.y()+self.animation_amplitude, self.start_pos.width(), self.start_pos.height())
-		
-		self.height_anim.setLoopCount(-1)
-		self.height_anim.setDuration(duration/2)
-
-		#	Animation down from initial
-		self.height_anim.setStartValue(self.start_pos)
-		self.height_anim.setKeyValueAt(0.5, self.end_pos)
-		self.height_anim.setEndValue(self.start_pos)
-		self.height_anim.start()
-
-	def __init__(self, parent, object_name, arrow_icon, width=50, height=50):
-		QPushButton.__init__(self)
-
-		self.setIcon(arrow_icon)
-		self.setObjectName(object_name)
-		self.setIconSize(QSize(width,height))
-
-		self.height_anim = QPropertyAnimation(self, "geometry")
-		self.height_anim.setEasingCurve(QEasingCurve.InOutCirc)
+from stylesheets.StyleSheets import setStyleSheet
+from widgets.FloatingDownArrow import FloatingDownArrow 
 
 
-		# self.timer = QTimer(self)
-		# self.timer.setInterval(self.animation_duration)
-		# self.connect(self.timer, SIGNAL("timeout()"), self.floatAnimation)
-		# self.timer.start()
+class ShowMoreWidget(QWidget):
+	def showEvent(self, event):
+		self.down_arrow_widget.startFloatAnimation()
+
+	def hideEvent(self, event):
+		self.down_arrow_widget.stopFloatAnimation()
+
+	def __init__(self, assets):
+		QWidget.__init__(self)
+	
+		setStyleSheet(self, "subject_tile")
+
+		self.setObjectName("downArrow")
+
+		# Size policy
+		self.main_layout = QVBoxLayout()
+		self.layout = QVBoxLayout()
+		self.frame = QPushButton()
+		self.frame.setObjectName("downArrow")
+	
+		self.down_arrow_widget = FloatingDownArrow(self, "downArrow", assets.icon_down_icon)
+		# self.down_arrow_widget.clicked.connect(self.showPastSubjects)
+	
+		self.label_showmore = QLabel("Show Previous Subjects")
+		self.label_showmore.setObjectName("greyText")
+
+		self.layout.addWidget(self.label_showmore, 0, Qt.AlignCenter)
+		self.layout.addWidget(self.down_arrow_widget, 0, Qt.AlignCenter)
+
+		self.frame.setLayout(self.layout)
+		self.main_layout.addWidget(self.frame)
+		self.setLayout(self.main_layout)

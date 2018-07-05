@@ -1,10 +1,10 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 
-BUTTON_STYLE_SHEET_PATH = "front/stylesheets/subject_tile.stylesheet"
+from stylesheets.StyleSheets import setStyleSheet
 
-BIG_TILE_SIZE = [260,200]
-SMALL_TILE_SIZE = [200,150]
+BIG_TILE_SIZE = [280,200]
+SMALL_TILE_SIZE = [250,150]
 
 TILE_NON_GLOW_COLOUR = QColor(0,0,0,100)
 TILE_GLOW_COLOUR = QColor(47, 149, 153,250)
@@ -14,7 +14,7 @@ GLOW_STRENGTH = 15
 TILE_ICON_PADDING_FACTOR = 3
 
 
-class confirmSubjectWidget(QWidget):
+class ConfirmSubjectWidget(QWidget):
 	def resizeEvent(self, event):
 		# Resize icon if subject tiles change size
 		self.button_confirm.setIconSize(QSize(self.button_confirm.parent().size().width()/TILE_ICON_PADDING_FACTOR, self.button_confirm.parent().size().height()/TILE_ICON_PADDING_FACTOR));
@@ -55,9 +55,7 @@ class confirmSubjectWidget(QWidget):
 
 		self.main_layout = QVBoxLayout(self)
 
-		sshFile=BUTTON_STYLE_SHEET_PATH
-		with open(sshFile,"r") as fh: 
-			self.styleSheet = fh.read()
+		setStyleSheet(self, "subject_tile")
 
 		self.setStyleSheet(self.styleSheet)
 

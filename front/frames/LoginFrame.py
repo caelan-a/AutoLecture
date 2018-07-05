@@ -7,7 +7,6 @@ FORM_WIDTH = 800
 
 class LoginFrame(QWidget):
 	def goToSubjectConfirmation(self):
-		print("Going to next frame")
 		self.subject_confirmation_frame.populateSubjectsFromInfo(self.backend_app.user.raw_subject_info)
 		self.parent().switchSubFrame(self.subject_confirmation_frame)
 
