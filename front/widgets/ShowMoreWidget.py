@@ -26,7 +26,6 @@ class ShowMoreWidget(QWidget):
 		self.frame.setObjectName("downArrow")
 	
 		self.down_arrow_widget = FloatingDownArrow(self, "downArrow", assets.icon_down_icon)
-		# self.down_arrow_widget.clicked.connect(self.showPastSubjects)
 	
 		self.label_showmore = QLabel("Show Previous Subjects")
 		self.label_showmore.setObjectName("greyText")

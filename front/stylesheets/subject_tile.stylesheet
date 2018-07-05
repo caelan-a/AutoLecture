@@ -25,12 +25,51 @@
     color: grey;
 }
 
-downArrow {
+#downArrow {
     background-color: rgba(0,0,0,0);
     outline: none;
 }
 
-QPushButton {
-    background-color: rgba(0,0,0,0);
-    outline: none;
+QLabel#noSubjectsText {
+    font: 28px;
+    color: grey;   
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background: none;
+    height: 8px;
+    margin: 0px 8px 0 8px;
+}
+
+QScrollBar::handle:horizontal {
+    background: lightgray;
+
+    min-width: 8px;
+}
+
+QScrollBar::add-line:horizontal {
+    background: none;
+    width: 8px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+    
+}
+
+QScrollBar::sub-line:horizontal {
+    background: none;
+    width: 8px;
+    subcontrol-position: top left;
+    subcontrol-origin: margin;
+    position: absolute;
+}
+
+QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    width: 8px;
+    height: 8px;
+    background: none;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
 }

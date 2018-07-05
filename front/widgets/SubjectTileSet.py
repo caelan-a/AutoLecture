@@ -2,6 +2,7 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 
 from widgets.ConfirmSubjectWidget import ConfirmSubjectWidget
+
 # class SubjectList
 class SubjectTileSet(QWidget):
 	def createWidgetFromInfo(self, info_subject):
@@ -27,8 +28,9 @@ class SubjectTileSet(QWidget):
 		else:
 			print("no subjects")
 			self.label_no_subjects_available = QLabel("Subjects for this semester are yet to be released")
-			self.label_no_subjects_available.setObjectName("greyText")
-			self.row.addWidget(self.label_no_subjects_available)
+			self.label_no_subjects_available.setObjectName("noSubjectsText")
+			self.row.addWidget(self.label_no_subjects_available, 0, Qt.AlignCenter)
+			self.vert_layout.addLayout(self.row)
 
 	def __init__(self, max_subjects_per_row, assets, widget_size):
 		QWidget.__init__(self)

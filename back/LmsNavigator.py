@@ -32,7 +32,7 @@ def goToLms(username, password):
 	else:
 		print("Already logged in..")
 
-	# settings.driver.get("https://app.lms.unimelb.edu.au/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_5_1")
+	settings.driver.get("https://app.lms.unimelb.edu.au/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_5_1")
 
 def isSummerTimeTable():
 	#	Insert logic to check for summer timetable
@@ -136,7 +136,8 @@ def getLmsSubjectInfo():
 	subjects = {} # each element is a list of info
 
 	#//*[@id="_4_1termCourses_noterm"]/ul/li[1]/a
-	html_list = LinkUtil.getLinkByXPath('//*[@id="_4_1termCourses_noterm"]/ul')
+	html_list = LinkUtil.getLinkByXPath('//*[@id="_158_1termCourses_noterm"]/ul')
+
 	el_list = html_list.find_elements_by_css_selector('[target^=_top]')
 
 	for e in el_list:
@@ -162,6 +163,7 @@ def getLmsSubjectInfo():
 		id_end = raw_id.find(id_end_indentifier)
 
 		subject_info["course_id"] = raw_id[id_start:id_end]
+		
 		subjects[subject_info["code"]] = subject_info
 
 	return subjects
