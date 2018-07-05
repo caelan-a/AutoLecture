@@ -32,6 +32,8 @@ def goToLms(username, password):
 	else:
 		print("Already logged in..")
 
+	# settings.driver.get("https://app.lms.unimelb.edu.au/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_5_1")
+
 def isSummerTimeTable():
 	#	Insert logic to check for summer timetable
 	return false

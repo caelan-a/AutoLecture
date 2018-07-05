@@ -48,6 +48,29 @@ class AutoLectureApp():
 	def closeBrowser(self):
 		settings.closeBrowser()
 
+
+	def getSubjectLMSInfo(self):
+		# #	Return subjects in a dictionary of 2 elements
+		username = self.getLoginInfo()[0]
+		password = self.getLoginInfo()[1]
+
+		# self.startBrowser()
+		# LmsNavigator.goToLms(username, password)
+		# info_subjects = LmsNavigator.getLmsSubjectInfo()
+
+		# info_current_subjects = {}
+		# info_past_subjects = {}
+
+		# for subject in info_subjects:
+		# 	if info_subjects[subject].get("semester") == self.user.current_term or info_subjects[subject].get("year") == self.user.current_year:
+		# 		info_current_subjects[subject] = info_subjects[subject]
+		# 	else:
+		# 		info_past_subjects[subject] = info_subjects[subject]
+				
+		# # print("Semester: {} | Year: {}\n\n".format(self.user.current_term,self.user.current_year))
+
+		# self.user.raw_subject_info = {"current": info_current_subjects, "past": info_past_subjects }
+	
 	def __init__(self):
 		self.isNewUser = self.isNewUser() #	Check if new user for loading or creating
 		self.user = User()

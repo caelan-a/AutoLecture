@@ -39,7 +39,7 @@ class confirmSubjectWidget(QWidget):
 			self.shadow_anim.start()
 			self.confirm_bool = True
 
-	def __init__(self, title, semester, year, code, subject_icon, size):
+	def __init__(self, title, semester, year, subject_icon, size):
 		QWidget.__init__(self)
 		self.confirm_bool = False
 

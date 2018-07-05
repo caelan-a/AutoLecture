@@ -21,7 +21,7 @@ class User(object):
 		self.current_year = datetime.datetime.now().date().year
 		self.current_term = self.getCurrentTerm()
 
-		self.subject_info = [] # delete, only for testing
+		self.raw_subject_info = [] #	Holds dictionary of LMS information for subjects, used during setup
 
 		self.timetable = []
 

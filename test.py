@@ -8,17 +8,17 @@ from back.app import AutoLectureApp
 os.path.join(os.path.dirname(__file__))
 
 autolecture_app = AutoLectureApp()
-autolecture_app.loadUser()
+# autolecture_app.loadUser()
 
 user = autolecture_app.user
 
-# autolecture_app.user.setUniversity("University of Melbourne", UniversityTools.universities.get("University of Melbourne"))
-# autolecture_app.user.setLoginInfo("caelana", "cael1998")
-# autolecture_app.startBrowser()
-# LmsNavigator.goToLms(autolecture_app.user.username,autolecture_app.user.password)
+autolecture_app.user.setUniversity("University of Melbourne")
+autolecture_app.user.setLoginInfo("caelana", "cael1998")
+autolecture_app.startBrowser()
+LmsNavigator.goToLms(autolecture_app.user.username,autolecture_app.user.password)
 # autolecture_app.user.subject_info = LmsNavigator.getLmsSubjectInfo()
-# subject_info = LmsNavigator.getLmsSubjectInfo()
-# autolecture_app.user.subject_info = subject_info
+subject_info = LmsNavigator.getLmsSubjectInfo()
+autolecture_app.user.subject_info = subject_info
 # autolecture_app.user.save()
 
 subject_info = user.subject_info

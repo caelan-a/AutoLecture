@@ -7,29 +7,42 @@ from widgets.ShowMoreWidget import ShowMoreWidget
 from widgets.NextButton import NextButton
 
 # class SubjectList
-
 class SubjectTileSet(QWidget):
-	def __init__(self, subject_widgets, num_subjects):
+	def createWidgetFromInfo(self, info_subject):
+		icon = self.assets.icon_subject_icon #	implement method to get unique icon
+		widget = confirmSubjectWidget(info_subject.get('title'), str(info_subject.get('semester')), str(info_subject.get('year')), icon, self.widget_size)
+		return widget
+
+	def addSubjectsFromInfo(self, info_subjects):
+		self.num_subjects = len(info_subjects)
+		print(info_subjects)
+		if self.num_subjects != 0:
+			for index, subject in enumerate(info_subjects):
+				subject_count = index + 1
+				self.row.addWidget(self.createWidgetFromInfo(info_subjects[subject]))
+
+				if subject_count % self.max_subjects_per_row == 0: 
+					self.row_layouts.append(self.row)
+					self.vert_layout.addLayout(self.row)
+					self.row = QHBoxLayout()
+
+			if self.num_subjects % self.max_subjects_per_row != 0:
+				self.row_layouts.append(self.row)
+				self.vert_layout.addLayout(self.row)
+		else:
+			label_no_subjects_available = QLabel("Subjects for this semester are yet to be released")
+			label_no_subjects_available.setObjectName("greyText")
+			self.row.addWidget(label_no_subjects_available)
+
+	def __init__(self, max_subjects_per_row, assets, widget_size):
 		QWidget.__init__(self)
-		self.num_subjects = num_subjects
-		self.max_subjects_per_row = 6
-		self.num_rows = 1 + int(self.max_subjects_per_row/num_subjects)
+		self.max_subjects_per_row = max_subjects_per_row
+		self.assets	= assets
+		self.widget_size = widget_size
 
 		self.vert_layout = QVBoxLayout()
 		self.row_layouts = []
-
 		self.row = QHBoxLayout()
-
-		for i in range(1, self.num_subjects+1):
-			self.row.addWidget(subject_widgets[i-1])
-			if i % self.max_subjects_per_row == 0:
-				self.row_layouts.append(self.row)
-				self.vert_layout.addLayout(self.row)
-				self.row = QHBoxLayout()
-
-		if self.num_subjects % self.max_subjects_per_row != 0:
-			self.row_layouts.append(self.row)
-			self.vert_layout.addLayout(self.row)
 
 		self.setLayout(self.vert_layout)
 
@@ -40,6 +53,13 @@ class SubjectConfirmationFrame(QWidget):
 
 	def showEvent(self, event):
 		self.button_showmore.startFloatAnimation()
+
+	def populateSubjectsFromInfo(self, subject_info_list):
+		if "current" in subject_info_list.keys():
+			self.current_subjects_tileset.addSubjectsFromInfo(subject_info_list["current"])
+
+		if "past" in subject_info_list.keys():
+			self.past_subjects_tileset.addSubjectsFromInfo(subject_info_list["past"])
 
 	def __init__(self, parent, assets):
 		QWidget.__init__(self)
@@ -58,62 +78,25 @@ class SubjectConfirmationFrame(QWidget):
 		self.label_showmore = QLabel("Show Previous Subjects")
 		self.label_showmore.setObjectName("greyText")
 
-		self.label_current_subjects = QLabel("Current Subjects")
-		self.label_current_subjects.setObjectName("greyText")
-
-		self.label_past_subjects = QLabel("Previous Subjects")
-		self.label_past_subjects.setObjectName("greyText")
-		
-		#	Horizontal line
-		self.line = QFrame()
-		self.line.setObjectName("line")
-		# self.line.setGeometry(QRect(320,150,118,30))
-		self.line.setFrameShape(QFrame.HLine)
-		self.line.setFrameShadow(QFrame.Sunken)
-
-		#	Row for current subjects
-		self.current_subjects_row = QHBoxLayout()
-		self.current_subjects_row.addWidget(confirmSubjectWidget("Linear Algebra", "2", "2017", "MAST10007",assets.icon_subject_icon, "big"))
-		self.current_subjects_row.addWidget(confirmSubjectWidget("Engineering Systems Design", "2", "2017", "ENGR10003",assets.icon_subject_icon, "big"))
-		self.current_subjects_row.addWidget(confirmSubjectWidget("Physics", "2", "2017", "PHYC10004",assets.icon_subject_icon, "big"))
-		self.current_subjects_row.addWidget(confirmSubjectWidget("Linguistics", "2", "2017", "LING2005",assets.icon_subject_icon, "big"))
-		self.current_subjects_row.addWidget(confirmSubjectWidget("Linguistics", "2", "2017", "LING2005",assets.icon_subject_icon, "big"))
+		#	Subject tilesets
+		self.current_subjects_tileset = SubjectTileSet(6, assets, "big")
+		self.past_subjects_tileset = SubjectTileSet(6, assets, "small")
 
 		#	Row for past subjects still available on LMS
-
-		self.past_subjects = []
-		for i in range(1, 7):
-			self.past_subjects.append(confirmSubjectWidget("Linguistics", str(i), "2017", "LING2005",assets.icon_subject_icon, "small"))
-		self.past_subject_tile_set = SubjectTileSet(self.past_subjects, len(self.past_subjects))
-
 		self.layout.addStretch()
 		self.layout.addWidget(self.label_question, 0, Qt.AlignCenter)
 		self.layout.addStretch()
-		# self.layout.addWidget(self.label_current_subjects,0, Qt.AlignCenter)
-		# self.layout.addWidget(self.line)
 		self.layout.addStretch()
-		self.layout.addLayout(self.current_subjects_row)
-		# self.layout.addStretch()
-		# self.layout.addStretch()
+		self.layout.addWidget(self.current_subjects_tileset)
 		self.layout.addStretch()
 		self.layout.addStretch()
 		self.layout.addStretch()
-		# self.layout.addStretch()
-		# self.layout.addWidget(self.label_showmore, 0, Qt.AlignCenter)
-		# self.layout.addWidget(self.button_showmore, 0, Qt.AlignCenter)
-		# self.layout.addWidget(self.line)
-		# self.layout.addWidget(self.label_past_subjects,0, Qt.AlignCenter)
-		self.layout.addStretch()
-		self.layout.addWidget(self.past_subject_tile_set)
-		# self.layout.addStretch()
-		self.layout.addStretch()
-
-		self.layout.addStretch()
+		self.layout.addWidget(self.past_subjects_tileset)
 		
 		self.layout.addWidget(self.button_confirm, 0, Qt.AlignCenter)
 		
 		self.setLayout(self.layout)
 
-	def show(self):
-		super().show()
+
+	def showEvent(self, event):
 		self.parent().title_frame.hide()

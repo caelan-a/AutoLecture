@@ -48,7 +48,7 @@ class Window(QWidget):
 		self.layout.setContentsMargins(0,0,0,0)
 		
 		#	Screens 
-		self.screen_setup = SetupScreen(assets)
+		self.screen_setup = SetupScreen(backend_app, assets)
 		self.screen_settings = SettingsScreen(assets)
 		self.screen_menu = MenuScreen(assets)
 

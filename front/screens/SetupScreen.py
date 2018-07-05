@@ -19,15 +19,19 @@ class SetupScreen(QWidget):
 		else:
 			self.title_frame.show()
 
-	def __init__(self, assets):
+	def getLoadingFrame(self):
+		return self.loading_frame
+
+	def __init__(self,backend_app, assets):
 		QWidget.__init__(self)
 
 		#	Frames
+		self.loading_frame = LoadingFrame(assets.movie_loading_anim)	#	Needs to be at top to pass to frames that use it
+
 		self.title_frame = TitleFrame()
-		self.login_frame = LoginFrame()
-		self.welcome_frame = WelcomeFrame()
-		self.loading_frame = LoadingFrame(assets.movie_loading_anim)
 		self.subject_confirmation_frame = SubjectConfirmationFrame(self, assets)
+		self.login_frame = LoginFrame(backend_app, self.loading_frame, self.subject_confirmation_frame)
+		self.welcome_frame = WelcomeFrame()
 
 		self.login_frame.hide()
 		self.welcome_frame.hide()
@@ -35,17 +39,16 @@ class SetupScreen(QWidget):
 		self.subject_confirmation_frame.hide()
 
 		self.active_subframe = self.welcome_frame
-		self.switchSubFrame(self.subject_confirmation_frame)
+		self.switchSubFrame(self.welcome_frame)
 
 		####
-
+  
 		self.layout = QVBoxLayout()
 
 		self.layout.addWidget(self.title_frame)			# Top frame
-
 		self.layout.addWidget(self.login_frame)		# Bottom frame
+		self.layout.addWidget(self.subject_confirmation_frame)
 		self.layout.addWidget(self.welcome_frame)
 		self.layout.addWidget(self.loading_frame)
-		self.layout.addWidget(self.subject_confirmation_frame)
-		
+
 		self.setLayout(self.layout)

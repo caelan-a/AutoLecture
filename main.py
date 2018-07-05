@@ -1,4 +1,4 @@
-import os, sys
+import os, sys 
 sys.path.append(os.path.dirname(__file__))
 
 from PySide.QtCore import *
@@ -21,6 +21,7 @@ window = Window(backend_app, width, height)
 if(backend_app.isNewUser):
 	window.setInitialScreen(window.screen_setup)
 else:
+	backend_app.loadUser()
 	window.setInitialScreen(window.screen_setup)
 
 window.run(qt_app)
