@@ -15,6 +15,7 @@ class Subject(object):
 		self.year = year
 		self.course_id = course_id
 		self.lectureHandler = []
+		self.subject_schedule = []
 
 	def createLectureCalender(self):
 		self.lectureHandler = LectureHandler.LectureHandler(self)
@@ -24,3 +25,6 @@ class Subject(object):
 
 	def save(self):
 		pickle.dump(self, open("save\\"+self.CODE+".pkl", "wb"))
+
+	def setSubjectSchedule(self):
+		pass

@@ -4,14 +4,12 @@ from PySide.QtCore import *
 
 class MySignal(QObject):
         new_loading_text = Signal(str)
-        go_to_next_frame = Signal()
 
 class GetOnlineSubjectScheduleInfo(QThread):
-        def __init__(self, parent, back_end, set_loading_text_function, subject_confirmation_frame):
+        def __init__(self, parent, back_end, set_loading_text_function):
                 QThread.__init__(self, parent)
                 self.exiting = False
                 self.back_end = back_end
-                self.subject_confirmation_frame = subject_confirmation_frame
 
                 #       Connect loading text functionality
                 self.sig = MySignal()
@@ -26,7 +24,8 @@ class GetOnlineSubjectScheduleInfo(QThread):
         def run(self):
                 while self.exiting == False:
                         self.setLoadingText('Fetching subjects from LMS')
-                        self.back_end.getSubjectLMSInfo()
+                        self.back_end.getTimeTable()
+                        self.back_end.getSubjectsToAddScheduleInfo()
                         self.setLoadingText('Subjects have been fetched')
                         self.exiting = True
 

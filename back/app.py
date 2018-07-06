@@ -8,6 +8,8 @@ from LectureHandler import LectureHandler, Lecture
 import LmsNavigator
 import download
 import pickle
+from Subject import Subject
+from SubjectSchedule import SubjectSchedule
 
 USER_SAVE_PATH = "save\\user.pkl"
 
@@ -48,43 +50,63 @@ class AutoLectureApp():
 	def closeBrowser(self):
 		settings.closeBrowser()
 
+	def getTimeTable(self):
+		if self.user.timetable == None:
+			settings.startBrowser()
+			self.user.timetable = LmsNavigator.getTimeTable("caelana", "cael1998", 2)
+
+			timetable_info = self.user.timetable.pop("info")
+			if int(timetable_info["semester"]) != self.user.current_term or int(timetable_info["year"]) != self.user.current_year:
+				print("Wrong timetable (Sem {} {}) downloaded. AutoLecture needs Sem {} {}".format(timetable_info["semester"],timetable_info["year"],self.user.current_term, self.user.current_year))
+
+			self.user.save()
+		else:
+			pass
+
+	def getSubjectsToAddScheduleInfo(self):
+		for subject in self.subjects_to_add["current"]:
+			if self.user.timetable != None:
+				subject.setSubjectSchedule(self.user.timetable[subject_key])
+
+		for subject in self.subjects_to_add["past"]:
+			pass
+	def fillSubjectsToAdd(self, info_subjects_to_add):
+		info = info_subjects_to_add["current"]
+		for subject_key in info:
+			subject = Subject(info[subject_key]["title"], info[subject_key]["semester"],info[subject_key]["year"],info[subject_key]["code"], info[subject_key]["course_id"])
+			self.subjects_to_add["current"].append(subject)
+
+		info = info_subjects_to_add["past"]
+		for subject_key in info:
+			subject = Subject(info[subject_key]["title"], info[subject_key]["semester"],info[subject_key]["year"],info[subject_key]["code"], info[subject_key]["course_id"])
+			self.subjects_to_add["past"].append(subject)
 
 	def getSubjectLMSInfo(self):
-		# # #	Return subjects in a dictionary of 2 elements
-		# username = self.getLoginInfo()[0]
-		# password = self.getLoginInfo()[1]
+		"""Return subjects in a dictionary of 2 elements"""
+		if self.user.raw_subject_info == None:
+			username = self.getLoginInfo()[0]
+			password = self.getLoginInfo()[1]
 
-		# self.startBrowser()
-		# LmsNavigator.goToLms(username, password)
-		# info_subjects = LmsNavigator.getLmsSubjectInfo()
+			self.startBrowser()
+			LmsNavigator.goToLms(username, password)
+			info_subjects = LmsNavigator.getLmsSubjectInfo()
 
-		# info_current_subjects = {}
-		# info_past_subjects = {}
+			info_current_subjects = {}
+			info_past_subjects = {}
 
-		# for subject in info_subjects:
-		# 	if info_subjects[subject].get("semester") == self.user.current_term and info_subjects[subject].get("year") == self.user.current_year:
-		# 		info_current_subjects[subject] = info_subjects[subject]
-		# 	else:
-		# 		info_past_subjects[subject] = info_subjects[subject]
+			for subject in info_subjects:
+				if info_subjects[subject].get("semester") == self.user.current_term and info_subjects[subject].get("year") == self.user.current_year:
+					info_current_subjects[subject] = info_subjects[subject]
+				else:
+					info_past_subjects[subject] = info_subjects[subject]
 				
-		print("Semester: {} | Year: {}\n\n".format(self.user.current_term,self.user.current_year))
-		# print("Current subjects: {}".format(info_current_subjects))
-		# self.user.raw_subject_info = {"current": info_current_subjects, "past": info_past_subjects }
-		# self.user.save()
+			self.user.raw_subject_info = {"current": info_current_subjects, "past": info_past_subjects }
+			self.user.save()
+		else:
+			pass
 
 	def __init__(self):
 		self.isNewUser = self.isNewUser() #	Check if new user for loading or creating
+		self.subjects_to_add = {"current": [], "past": []} 	#	Used to store partial information when adding subjects throughout adding process, see scheduling modules, dict of past and current
+
 		self.user = User()
-
-		# settings.startBrowser()
-		# LmsNavigator.login(settings.userData.user, settings.userData.password)
-		# self.cal = settings.userData.subjects[2].lectureCalender
-		# self.cal.setDateLastDownloaded("September 22")
-		# cal.updateLectureList()
-		# self.lectures_to_dl = cal.getUndownloadedScheduledLectures()
-		# self.lectures_to_dl = [l for l in lectures_to_dl if l not in lectures_to_dl[1:4]]
-		# self.download.downloadLectures(cal, lectures_to_dl)
-		# settings.closeBrowser()
-
-		#settings.userData.updateLectureCalenders()
-		#settings.userData.downloadNewLectures()

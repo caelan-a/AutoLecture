@@ -34,17 +34,7 @@ def goToLms(username, password):
 
 	settings.driver.get("https://app.lms.unimelb.edu.au/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_5_1")
 
-def isSummerTimeTable():
-	#	Insert logic to check for summer timetable
-	return false
-
-def goToSummerTimeTable():
-	subject_schedules_and_info = {}
-	return subject_schedules_and_info
-
-def goToTimeTable(username, password):
-	timetable_url = 'https://prod.ss.unimelb.edu.au/student/SM/StudentTtable10.aspx?r=%23UM.STUDENT.APPLICANT&f=%24S1.EST.TIMETBL.WEB&sid=911038&cfn=s1prod\%20direct&tkn=RcrNMK3nQu2LTgKwSg9WWo6fN573IbZH'
-	#timetable_url = 'file:///C:/Users/cande/Desktop/timetable_page.html'
+def goToTimeTable(username, password, timetable_url):
 	settings.driver.get(timetable_url)
 
 	USERNAME = username
@@ -63,7 +53,17 @@ def goToTimeTable(username, password):
 	else:
 		print("Already logged in..")
 
-def getOnlineTimeTable():
+#	terms = [0,1,2,3] <=> [summer, sem 1, sem 2, winter]
+#	Use different link based on term
+def getTimeTable(username, password, term):
+	if term == 0:
+		pass
+	elif term == 1 or term == 2:
+		url = "https://prod.ss.unimelb.edu.au/student/SM/StudentTtable10.aspx?r=%23UM.STUDENT.APPLICANT&f=%24S1.EST.TIMETBL.WEB&sid=911038&cfn=s1prod%20direct&tkn=5QlB0M7Al0pcSXBgdTV9X%2bxoN6NGSIzB"
+		goToTimeTable(username, password, url)
+	elif term == 3:
+		pass
+
 	subject_schedules_and_info = {}
 
 	info_root_raw = LinkUtil.getLinkByXPath('//*[@id="ctl00_Content_ctlFilter_CboStudyPeriodFilter_elbList"]')
@@ -130,7 +130,11 @@ def getOnlineTimeTable():
 		subject_schedule.addSessions(sessions) 
 
 		subject_schedules_and_info[subject_schedule.code] = subject_schedule
+
 	return subject_schedules_and_info
+
+def getScheduleInfoFromEchoPage_Legacy(course_id):
+		pass
 
 def getLmsSubjectInfo():
 	subjects = {} # each element is a list of info

@@ -8,7 +8,7 @@ EASING_CURVE = QEasingCurve.InQuart
 
 class FadeWidget(QWidget):
 	def showEvent(self, event):
-		self.property_anim_fade_in.start(QPropertyAnimation.DeleteWhenStopped);
+		self.property_anim_fade_in.start();
 
 	def __init__(self):
 			QWidget.__init__(self)

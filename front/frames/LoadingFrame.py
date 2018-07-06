@@ -7,16 +7,19 @@ class LoadingFrame(QWidget):
 		self.label_loading_info.setText(info_text)
 
 	def showEvent(self, event):
+		self.title_frame.show()
 		self.label_loading_anim.movie().start()
 
 	def hideEvent(self, event):
+		self.title_frame.hide()
 		self.label_loading_anim.movie().stop()
 
-	def __init__(self, loading_anim_movie):
+	def __init__(self, loading_anim_movie, title_frame):
 		QWidget.__init__(self)
 
 		self.layout = QVBoxLayout()
 		self.layout.setAlignment(Qt.AlignHCenter)
+		self.title_frame = title_frame
 
 		# Setup animation 
 		loading_anim_movie.setSpeed(400)
@@ -33,6 +36,7 @@ class LoadingFrame(QWidget):
 
 		# Info string about current action
 		self.label_loading_info = QLabel("Loading info")
+		self.label_loading_info.setObjectName("loadingInfo")
 		self.label_loading_info.setAlignment(Qt.AlignCenter)
 
 		# Lay widgets out

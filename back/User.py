@@ -21,9 +21,9 @@ class User(object):
 		self.current_year = datetime.datetime.now().date().year
 		self.current_term = self.getCurrentTerm()
 
-		self.raw_subject_info = [] #	Holds dictionary of LMS information for subjects, used during setup
+		self.raw_subject_info = None #	Holds dictionary of LMS information for subjects, used during setup
 
-		self.timetable = []
+		self.timetable = None
 
 	def getCurrentTerm(self):
 		current_date = datetime.datetime.now().date()
@@ -62,6 +62,9 @@ class User(object):
 
 	def setTimeTable(self, timetable):
 		self.timetable = timetable
+
+	def getTimeTable(self):
+		return self.timetable
 
 	def createSubject(self, title, semester, year, code, course_id, timetable = []):
 		new_subject = Subject(title, semester, year, code, course_id, time_table = timetable)

@@ -147,7 +147,7 @@ QComboBox  QAbstractItemView {
 
 QLabel {
 	color: #2F9599;
-    font: 24px; 
+    font: bold 11px; 
 }
 
 QLabel#question {

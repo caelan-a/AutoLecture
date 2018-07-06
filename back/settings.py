@@ -8,6 +8,7 @@ def startBrowser():
 	global driver
 	LOGGER.setLevel(logging.WARNING)
 	#	Start Chrome
+
 	options = webdriver.ChromeOptions()
 	options.add_argument('headless')
 	options.add_argument('--log-level=3')

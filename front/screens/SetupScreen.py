@@ -28,9 +28,9 @@ class SetupScreen(QWidget):
 		QWidget.__init__(self)
 
 		#	Frames
-		self.loading_frame = LoadingFrame(assets.movie_loading_anim)	#	Needs to be at top to pass to frames that use it
 
 		self.title_frame = TitleFrame()
+		self.loading_frame = LoadingFrame(assets.movie_loading_anim, self.title_frame)	#	Needs to be at top to pass to frames that use it
 		self.subject_schedule_frame = SubjectScheduleFrame(backend_app, self.loading_frame)
 		self.subject_confirmation_frame = SubjectConfirmationFrame(self, assets, self.subject_schedule_frame)
 		self.login_frame = LoginFrame(backend_app, self.loading_frame, self.subject_confirmation_frame)
@@ -52,6 +52,7 @@ class SetupScreen(QWidget):
 		self.layout.addWidget(self.title_frame)			# Top frame
 		self.layout.addWidget(self.login_frame)		# Bottom frame
 		self.layout.addWidget(self.subject_confirmation_frame)
+		self.layout.addWidget(self.subject_schedule_frame)
 		self.layout.addWidget(self.welcome_frame)
 		self.layout.addWidget(self.loading_frame)
 

@@ -8,66 +8,39 @@ from widgets.SubjectTileSet import SubjectTileSet
 from widgets.ShowMoreWidget import ShowMoreWidget
 
 from widgets.ConfirmSubjectWidget import ConfirmSubjectWidget
-
-class HorizontalWidgetList(QWidget):
-	def __init__(self, assets, widget_size):
-		QWidget.__init__(self)
-		self.assets = assets
-		self.widget_size = widget_size
-
-		self.layout = QHBoxLayout(self)
-		self.setLayout(self.layout)
-
-	def getSelectedSubjectKeys(self):
-		keys = []
-		for widget in self.findChildren(ConfirmSubjectWidget):
-			if widget.isSelected():
-				keys.append(widget.getKey())
-		return keys
-
-	def createWidgetFromInfo(self, info_subject):
-		icon = self.assets.icon_subject_icon #	implement method to get unique icon
-		widget = ConfirmSubjectWidget(info_subject.get('title'), str(info_subject.get('semester')), str(info_subject.get('year')), str(info_subject.get('code')), icon, self.widget_size)
-		return widget
-
-	def addSubjectsFromInfo(self, subject_info_list):
-		for index, subject in enumerate(subject_info_list):
-			self.layout.addWidget(self.createWidgetFromInfo(subject_info_list[subject]))
-
+from widgets.HorizontalWidgetList import HorizontalWidgetList
 
 class SubjectConfirmationFrame(QWidget):
-	def getSelectedSubjectKeys(self):
+	def getSelectedSubjectInfo(self):
 		#	Get keys of selected subjects
 		selected_current_subject_keys = self.current_subjects_tileset.getSelectedSubjectKeys()
 		selected_past_subject_keys = self.past_subjects_horizontal_list.getSelectedSubjectKeys()
 
 		#	Remove non selected current subjects from info list
+		subject_info_list = self.subject_info_list.copy() 	#	Use to debug quicker
+
 		current_subject_keys = list(self.subject_info_list["current"]) 
 		for key in current_subject_keys:
 			if key not in selected_current_subject_keys:
-				del self.subject_info_list["current"][key]
+				del subject_info_list["current"][key]
 
 		#	Remove non selected current subjects from info list
 		past_subject_keys = list(self.subject_info_list["past"]) 
 		for key in past_subject_keys:
 			if key not in selected_past_subject_keys:
-				del self.subject_info_list["past"][key]
+				del subject_info_list["past"][key]
 
-		print(self.subject_info_list)
-		return self.subject_info_list
+		return subject_info_list
 		
 
+	#	Go to next stage of setup
 	@Slot()
 	def scheduleSelectedSubjects(self):
-		info_subjects_selected = self.getSelectedSubjectKeys()
-		self.subject_schedule_frame.scheduleSubjects(info_subjects_selected)
+		info_subjects_selected = self.getSelectedSubjectInfo()
 		self.parent().switchSubFrame(self.subject_schedule_frame)
+		self.subject_schedule_frame.scheduleSubjects(info_subjects_selected)
 
-	@Slot()
-	def showPastSubjects(self):
-		self.showMoreWidget.hide()
-		self.past_subjects_tileset.show()
-
+	#	Setup subject tiles with info from previous stage
 	def populateSubjectsFromInfo(self, subject_info_list):
 		self.subject_info_list = subject_info_list
 
@@ -96,9 +69,6 @@ class SubjectConfirmationFrame(QWidget):
 		self.label_question.setObjectName("question")
 		self.button_confirm = NextButton("Next")
 		self.button_confirm.clicked.connect(self.scheduleSelectedSubjects)
-
-		self.showMoreWidget = ShowMoreWidget(assets)
-		self.showMoreWidget.frame.clicked.connect(self.showPastSubjects)
 
 		#	Subject tilesets
 		self.current_subjects_tileset = SubjectTileSet(5, assets, "big")

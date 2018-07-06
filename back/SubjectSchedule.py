@@ -1,12 +1,18 @@
 from operator import itemgetter
 
-
 class SubjectSchedule(object):
-
 	def __init__(self):
 		self.title = []
 		self.code = []
 		self.sessions = {}
+		self.chosen_lecture_sessions = []
+		self.lecture_start_time_offset = 5 #	Time in mins from when lecture start
+
+	def getTitle(self):
+		return self.title
+
+	def getCode(self):
+		return self.code
 
 	def sortSessionList(self, session_instances):	# Sessions instance refers to single list element of a given type such as Lectures, Worshops. Eg. [1, ['4:20 pm'], ['5:20 pm'], 'Location: This']
 		return sorted(session_instances, key = itemgetter("number"))
