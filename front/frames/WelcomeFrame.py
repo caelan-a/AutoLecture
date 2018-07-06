@@ -1,7 +1,10 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 
-class WelcomeFrame(QWidget):
+from FadeWidget import FadeWidget
+from widgets.NextButton import NextButton
+
+class WelcomeFrame(FadeWidget):
 	@Slot()
 	def start(self):
 		self.parent().parent().backend_app.setUniversity(self.uni_list.currentText())
@@ -9,8 +12,7 @@ class WelcomeFrame(QWidget):
 		self.parent().switchSubFrame(self.parent().login_frame)
 	
 	def __init__(self):
-		QWidget.__init__(self)
-
+		FadeWidget.__init__(self)
 		self.layout = QVBoxLayout()
 
 		self.university_names = ['University of Melbourne', 'Monash University']
@@ -19,7 +21,7 @@ class WelcomeFrame(QWidget):
 		self.uni_list.addItems(self.university_names)
 		self.layout.addWidget(self.uni_list,0,Qt.AlignCenter)
 
-		self.pushbutton_login = QPushButton("Start")
+		self.pushbutton_login = NextButton("Start")
 		self.pushbutton_login.clicked.connect(self.start)
 
 		self.layout.addStretch()

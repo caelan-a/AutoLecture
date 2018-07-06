@@ -1,9 +1,11 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 
-class TitleFrame(QWidget):
+from FadeWidget import FadeWidget
+
+class TitleFrame(FadeWidget):
 	def __init__(self):
-		QWidget.__init__(self)
+		FadeWidget.__init__(self)
 
 		self.layout = QVBoxLayout()
 

@@ -1,4 +1,3 @@
-
 QMenuBar {
 	background-color: grey;
 }
@@ -12,10 +11,25 @@ QComboBox  {
     text-align: center;
 }
 
+QPushButton#showMore {
+    background-color: #F0F0F0;
+    outline: none;
+}
+
 QLabel#settingsTitle {
     font: bold 50px;
     padding-left: 0.1em;
     color: white;
+}
+
+QLabel#greyText {
+    color: grey;
+    line-height: 0.1;
+    font: 16px;
+}
+
+QPushButton#nextButton {
+    min-width: 20em;
 }
 
 QPushButton#criticalButton {
@@ -53,8 +67,6 @@ QPushButton#backButton {
 }
 
 QPushButton#tickButton {
-    min-width: 5em;
-    max-width: 5em;
     background-color: rgba(0,0,0,0);
 }
 
@@ -87,11 +99,10 @@ QPushButton#listButton::Hover {
 
 QPushButton {
     color: white;
+    font: 14px;
     background-color: #2F9599;
     border-radius: 0.5em;
     padding: 2em;
-    min-width: 30em;
-    max-width: 30em;
     outline: 0;
 }
 
@@ -100,7 +111,7 @@ QPushButton#nextButton {
     background-color: #2F9599;
     border-radius: 0.5em;  
     outline: 0;
-    max-width: 5px;
+    padding: 1em;
     font: 14px;
 }
 
@@ -137,7 +148,6 @@ QComboBox  QAbstractItemView {
 QLabel {
 	color: #2F9599;
     font: 24px; 
-	font: bold;
 }
 
 QLabel#question {

@@ -6,7 +6,7 @@ class MySignal(QObject):
         new_loading_text = Signal(str)
         go_to_next_frame = Signal()
 
-class GetSubjectInfoThread(QThread):
+class GetOnlineSubjectScheduleInfo(QThread):
         def __init__(self, parent, back_end, set_loading_text_function, subject_confirmation_frame):
                 QThread.__init__(self, parent)
                 self.exiting = False

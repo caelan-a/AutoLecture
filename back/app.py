@@ -48,19 +48,43 @@ class AutoLectureApp():
 	def closeBrowser(self):
 		settings.closeBrowser()
 
+
+	def getSubjectLMSInfo(self):
+		# # #	Return subjects in a dictionary of 2 elements
+		# username = self.getLoginInfo()[0]
+		# password = self.getLoginInfo()[1]
+
+		# self.startBrowser()
+		# LmsNavigator.goToLms(username, password)
+		# info_subjects = LmsNavigator.getLmsSubjectInfo()
+
+		# info_current_subjects = {}
+		# info_past_subjects = {}
+
+		# for subject in info_subjects:
+		# 	if info_subjects[subject].get("semester") == self.user.current_term and info_subjects[subject].get("year") == self.user.current_year:
+		# 		info_current_subjects[subject] = info_subjects[subject]
+		# 	else:
+		# 		info_past_subjects[subject] = info_subjects[subject]
+				
+		print("Semester: {} | Year: {}\n\n".format(self.user.current_term,self.user.current_year))
+		# print("Current subjects: {}".format(info_current_subjects))
+		# self.user.raw_subject_info = {"current": info_current_subjects, "past": info_past_subjects }
+		# self.user.save()
+
 	def __init__(self):
 		self.isNewUser = self.isNewUser() #	Check if new user for loading or creating
 		self.user = User()
 
-		#settings.startBrowser()
-		#LmsNavigator.login(settings.userData.user, settings.userData.password)
-		#self.cal = settings.userData.subjects[2].lectureCalender
-		#self.cal.setDateLastDownloaded("September 22")
-		#cal.updateLectureList()
-		#self.lectures_to_dl = cal.getUndownloadedScheduledLectures()
-		#self.lectures_to_dl = [l for l in lectures_to_dl if l not in lectures_to_dl[1:4]]
-		#self.download.downloadLectures(cal, lectures_to_dl)
-		#settings.closeBrowser()
+		# settings.startBrowser()
+		# LmsNavigator.login(settings.userData.user, settings.userData.password)
+		# self.cal = settings.userData.subjects[2].lectureCalender
+		# self.cal.setDateLastDownloaded("September 22")
+		# cal.updateLectureList()
+		# self.lectures_to_dl = cal.getUndownloadedScheduledLectures()
+		# self.lectures_to_dl = [l for l in lectures_to_dl if l not in lectures_to_dl[1:4]]
+		# self.download.downloadLectures(cal, lectures_to_dl)
+		# settings.closeBrowser()
 
 		#settings.userData.updateLectureCalenders()
 		#settings.userData.downloadNewLectures()

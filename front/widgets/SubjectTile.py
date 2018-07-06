@@ -14,7 +14,7 @@ GLOW_STRENGTH = 15
 TILE_ICON_PADDING_FACTOR = 3
 
 
-class ConfirmSubjectWidget(QWidget):
+class SubjectTile(QWidget):
 	def resizeEvent(self, event):
 		# Resize icon if subject tiles change size
 		self.button_confirm.setIconSize(QSize(self.button_confirm.parent().size().width()/TILE_ICON_PADDING_FACTOR, self.button_confirm.parent().size().height()/TILE_ICON_PADDING_FACTOR));
@@ -22,13 +22,6 @@ class ConfirmSubjectWidget(QWidget):
 	def setShadow(self, shadow, x_off, y_off, strength):
 		shadow.setBlurRadius(strength)
 		shadow.setOffset(x_off,y_off)
-
-	def isSelected(self):
-		return self.confirm_bool
-
-	def getKey(self):
-		return self.key
-
 
 	@Slot()
 	def toggleSelected(self):
@@ -46,31 +39,27 @@ class ConfirmSubjectWidget(QWidget):
 			self.shadow_anim.start()
 			self.confirm_bool = True
 
-	def __init__(self, title, semester, year, code, subject_icon, size):
+	def __init__(self, title, semester, year, subject_icon, size):
 		QWidget.__init__(self)
 		
-		#	For user selection
 		self.confirm_bool = False
-		self.key = code
 
-		#	Layouts
-		setStyleSheet(self, "subject_tile")
 		self.main_layout = QVBoxLayout(self)
 		self.layout = QVBoxLayout()
 		self.policy = QSizePolicy.Maximum
 		self.setSizePolicy(self.policy,self.policy)
 
-		#	Frame
 		self.frame = QPushButton()
 		self.frame.setObjectName("subjectFrame")
 		self.frame.clicked.connect(self.toggleSelected)
 
-		#	Labels in frame
+		setStyleSheet(self, "subject_tile")
+
 		self.title = QLabel(title, self)
 		self.semester = QLabel("Semester " + semester, self)
 		self.year = QLabel(year, self)
+		self.year.setObjectName("year")
 
-		#	Widget size (to allow current subjects as big, past as small)
 		if size == "big":
 			self.frame.setMinimumSize(BIG_TILE_SIZE[0], BIG_TILE_SIZE[1])
 			self.title.setObjectName("title_big")
@@ -101,7 +90,6 @@ class ConfirmSubjectWidget(QWidget):
 		self.button_confirm.setObjectName("tickButton")	#	Refactor/fix object name
 		self.button_confirm.clicked.connect(self.toggleSelected)
 
-		#	Layout widgets
 		self.layout.addWidget(self.button_confirm, 0, Qt.AlignCenter)
 		self.layout.addWidget(self.title, 0, Qt.AlignCenter)
 		self.layout.addStretch()

@@ -1,15 +1,23 @@
-import requests
+class Grid():
+	def __init__(self):
+		self.rows = []
+		self.row = []
 
-url = 'https://app.lms.unimelb.edu.au/'
-payload = {'user_id': 'caelana', 'password': 'cael1998'}
+		num_subject = 10
+		subjects_per_row = 3
 
-with requests.Session() as s:
-    p = s.post(url, data=payload)
-    # print the html returned or something more intelligent to see if it's a successful login page.
-    print (p.text)
+		for i in range(1, num_subject+1):
+			self.row.append(i-1)
+			if i % subjects_per_row == 0:
+				self.rows.append(self.row)
+				self.row = []
+		if num_subject % subjects_per_row != 0:
+			self.rows.append(self.row)
 
-    # An authorised request.
-    r = s.get('https://app.lms.unimelb.edu.au/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_115_1')
-    print (r.content)
+	def print(self):
+		print(self.rows)
 
-    
+grid = Grid()
+grid.print()
+
+

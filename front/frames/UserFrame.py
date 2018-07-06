@@ -1,9 +1,9 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
-
-BUTTON_STYLE_SHEET_PATH = "front/stylesheets/button.stylesheet"
+from FadeWidget import FadeWidget
 
 from widgets.InputFieldWidget import InputField
+from stylesheets.StyleSheets import setStyleSheet
 
 class UserFrame(QWidget):
 	def __init__(self, parent):
@@ -17,10 +17,7 @@ class UserFrame(QWidget):
 		self.buttonBox.setWindowIcon(QIcon('resources/icons/logo_taskbar.png'))  
 		self.buttonBox.setIcon(QMessageBox.NoIcon)
 
-		sshFile=BUTTON_STYLE_SHEET_PATH
-		with open(sshFile,"r") as fh:
-			self.styleSheet = fh.read()
-		self.buttonBox.setStyleSheet(self.styleSheet)
+		setStyleSheet(self, "main")
 		
 		self.layout = QVBoxLayout()
 		self.input_username = InputField("Username", "caelana")

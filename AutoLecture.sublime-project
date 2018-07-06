@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": ["__pycache__", "docs", "save", "resources"],
+			"file_exclude_patterns": ["*.md", "*.png", ".gitignore", "requirements.txt", "__init__.py"]
+		}
+	],
+}
