@@ -25,3 +25,14 @@ else:
 	window.setInitialScreen(window.screen_setup)
 
 window.run(qt_app)
+
+"""
+
+1. Make front screen 2d QScrollArea with all the subject tiles, timetable on main screen, with lectures to watch, assignments to d0, numbers based on colour
+2. For documents, have user triggered search that collects all documents, use load frame for elegant load screen in frame.
+3. For each subject, 4 tabs -> Lectures, Documents, Assignments
+4. Make Documents, Assignments and timetable $3 unlockable
+5. Elegant looking website, same style as program, describes key features, and has download
+6. Ship with updater
+
+"""

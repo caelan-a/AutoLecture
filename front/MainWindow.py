@@ -38,6 +38,7 @@ class Window(QWidget):
         
 
 		self.setMinimumSize(QSize(WIDTH_SCALE_FACTOR*width,HEIGHT_SCALE_FACTOR*height))
+		self.setMaximumSize(QSize(WIDTH_SCALE_FACTOR*width,HEIGHT_SCALE_FACTOR*height))
 		self.setWindowIcon(QIcon('resources/icons/logo_taskbar.png'))  
 		self.setWindowTitle(' ') 
 

@@ -5,9 +5,16 @@ from widgets.ConfirmSubjectWidget import ConfirmSubjectWidget
 
 # class SubjectList
 class SubjectTileSet(QWidget):
+	def getSelectedSubjectKeys(self):
+		keys = []
+		for widget in self.findChildren(ConfirmSubjectWidget):
+			if widget.isSelected():
+				keys.append(widget.getKey())
+		return keys
+
 	def createWidgetFromInfo(self, info_subject):
 		icon = self.assets.icon_subject_icon #	implement method to get unique icon
-		widget = ConfirmSubjectWidget(info_subject.get('title'), str(info_subject.get('semester')), str(info_subject.get('year')), icon, self.widget_size)
+		widget = ConfirmSubjectWidget(info_subject.get('title'), str(info_subject.get('semester')), str(info_subject.get('year')), str(info_subject.get('code')),icon, self.widget_size)
 		return widget
 
 	def addSubjectsFromInfo(self, info_subjects):

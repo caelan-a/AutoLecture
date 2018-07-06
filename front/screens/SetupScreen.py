@@ -6,6 +6,8 @@ from frames.WelcomeFrame import WelcomeFrame
 from frames.LoginFrame import LoginFrame
 from frames.LoadingFrame import LoadingFrame
 from frames.SubjectConfirmationFrame import SubjectConfirmationFrame
+from frames.SubjectScheduleFrame import SubjectScheduleFrame
+
 
 class SetupScreen(QWidget):
 	def switchSubFrame(self, next):
@@ -29,7 +31,8 @@ class SetupScreen(QWidget):
 		self.loading_frame = LoadingFrame(assets.movie_loading_anim)	#	Needs to be at top to pass to frames that use it
 
 		self.title_frame = TitleFrame()
-		self.subject_confirmation_frame = SubjectConfirmationFrame(self, assets)
+		self.subject_schedule_frame = SubjectScheduleFrame(backend_app, self.loading_frame)
+		self.subject_confirmation_frame = SubjectConfirmationFrame(self, assets, self.subject_schedule_frame)
 		self.login_frame = LoginFrame(backend_app, self.loading_frame, self.subject_confirmation_frame)
 		self.welcome_frame = WelcomeFrame()
 
@@ -37,6 +40,7 @@ class SetupScreen(QWidget):
 		self.welcome_frame.hide()
 		self.loading_frame.hide()
 		self.subject_confirmation_frame.hide()
+		self.subject_schedule_frame.hide()
 
 		self.active_subframe = self.welcome_frame
 		self.switchSubFrame(self.welcome_frame)
