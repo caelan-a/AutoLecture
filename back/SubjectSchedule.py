@@ -1,5 +1,40 @@
 from operator import itemgetter
 
+def getScheduleFromRawLectures(title, code, raw_lecture_list):
+	schedule = SubjectSchedule()
+	schedule.title = title
+	schedule.code = code
+
+	#	list of dictionaries where each dictionary has a date as a key and list of times as value
+	unique_sessions = {}
+	for raw_lecture in raw_lecture_list:
+		date = raw_lecture["date"]
+		time = raw_lecture["time"]
+		day_of_week = date.strftime("%A")
+
+		#	If weekday hasn't been added, add new dictionary for weekday and add its accompanying time
+		if day_of_week not in unique_sessions.keys():
+			unique_sessions[day_of_week] = [time]
+		#	If date has been added, check if time has been added to date dictionary, if not add
+		elif time not in unique_sessions[day_of_week]:
+			unique_sessions[day_of_week].append(time)
+
+	#	Add session instances of type lecture for each unique session time and return a Schedule object of those
+	
+	session_instances = {"Lecture": []}
+	for session in unique_sessions:
+		for time in unique_sessions[session]:
+			session_instance = {}
+			session_instance["number"] = 0 #	To allow use of addSessions as it needs a ["number"] entry for sorting
+			session_instance["type"] = "Lecture"
+			session_instance["day"] = session
+			session_instance["start_time"] = time
+			session_instances["Lecture"].append(session_instance)
+			print("Day: {}, Time: {}".format(session, time))
+
+	schedule.addSessions(session_instances)
+	return schedule
+
 class SubjectSchedule(object):
 	def __init__(self):
 		self.title = []

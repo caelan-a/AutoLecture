@@ -9,9 +9,8 @@ from time import sleep
 
 import settings
 
+delay = 15
 def getLinkByText(link_text):
-	delay = 15
-
 	try:
 	    el_wait = WebDriverWait(delay).until(EC.presence_of_element_located((By.LINK_TEXT, link_text)))
 	except TimeoutException:
@@ -22,8 +21,6 @@ def getLinkByText(link_text):
 	return links[0]
 
 def getLinkByPartialText(link_text):
-	delay = 15
-
 	try:
 	    el_wait = WebDriverWait(settings.driver, delay).until(EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, link_text)))
 	except TimeoutException:
@@ -34,8 +31,6 @@ def getLinkByPartialText(link_text):
 	return links[0]
 
 def getLinkByID(link_id):
-	delay = 15
-
 	try:
 	    el_wait = WebDriverWait(settings.driver,delay).until(EC.presence_of_element_located((By.ID, link_id)))
 	except TimeoutException:
@@ -45,8 +40,6 @@ def getLinkByID(link_id):
 	return links[0]
 
 def getLinkByXPath(link_xpath):
-	delay = 15
-
 	try:
 	    el_wait = WebDriverWait(settings.driver, delay).until(EC.presence_of_element_located((By.XPATH, link_xpath)))
 	except TimeoutException:
@@ -56,8 +49,6 @@ def getLinkByXPath(link_xpath):
 	return links[0]
 
 def getLinkByClass(link_class):
-	delay = 15
-
 	try:
 	    el_wait = WebDriverWait(settings.driver, delay).until(EC.presence_of_element_located((By.CLASS_NAME, link_class)))
 	except TimeoutException:

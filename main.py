@@ -19,7 +19,7 @@ window = Window(backend_app, width, height)
 
 # Set initial screen
 if(backend_app.isNewUser):
-	window.setInitialScreen(window.screen_setup)
+	window.setInitialScreen(window.screen_menu)
 else:
 	backend_app.loadUser()
 	window.setInitialScreen(window.screen_setup)
@@ -34,5 +34,9 @@ window.run(qt_app)
 4. Make Documents, Assignments and timetable $3 unlockable
 5. Elegant looking website, same style as program, describes key features, and has download
 6. Ship with updater
+7. Gamify AutoLecture with points and incentives to keep up to date with lectures and even name lectures
+8. Mobile app
+9. Notes related to each lecture
+10. test
 
 """

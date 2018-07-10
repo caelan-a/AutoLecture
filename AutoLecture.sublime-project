@@ -3,7 +3,7 @@
 	[
 		{
 			"path": ".",
-			"folder_exclude_patterns": ["__pycache__", "docs", "save", "resources"],
+			"folder_exclude_patterns": ["__pycache__", "docs", "resources"],
 			"file_exclude_patterns": ["*.md", "*.png", ".gitignore", "requirements.txt", "__init__.py"]
 		}
 	],

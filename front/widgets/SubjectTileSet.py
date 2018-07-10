@@ -17,6 +17,24 @@ class SubjectTileSet(QWidget):
 		widget = ConfirmSubjectWidget(info_subject.get('title'), str(info_subject.get('semester')), str(info_subject.get('year')), str(info_subject.get('code')),icon, self.widget_size)
 		return widget
 
+	#	List of SubjectTile objects
+	def addSubjectTiles(self, subjects_list):
+		self.num_subjects = len(subjects_list)
+		for index, subject in enumerate(subjects_list):
+			subject_count = index + 1
+			# index+=1
+			self.row.addWidget(subject)
+
+			if subject_count % self.max_subjects_per_row == 0: 
+				self.row_layouts.append(self.row)
+				self.vert_layout.addLayout(self.row)
+				self.row = QHBoxLayout()
+
+		if self.num_subjects % self.max_subjects_per_row != 0:
+			self.row_layouts.append(self.row)
+			self.vert_layout.addLayout(self.row)
+
+	#	Add subjects from info given by LmsNavigator.getLmsSubjectInfo
 	def addSubjectsFromInfo(self, info_subjects):
 		self.num_subjects = len(info_subjects)
 		if self.num_subjects != 0:

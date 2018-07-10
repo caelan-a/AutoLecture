@@ -133,52 +133,12 @@ def getTimeTable(username, password, term):
 
 	return subject_schedules_and_info
 
+#	Get lectures from echo pages using pre 2018 software
 def getScheduleInfoFromEchoPage_Legacy(course_id):
-		pass
-
-def getLmsSubjectInfo():
-	subjects = {} # each element is a list of info
-
-	#//*[@id="_4_1termCourses_noterm"]/ul/li[1]/a
-	html_list = LinkUtil.getLinkByXPath('//*[@id="_158_1termCourses_noterm"]/ul')
-
-	el_list = html_list.find_elements_by_css_selector('[target^=_top]')
-
-	for e in el_list:
-		subject_info = {}
-
-		# Extract code and title
-		code_title = e.get_attribute('innerText')
-		code_title = code_title.split(':')
-
-		code_year_sem = code_title[0].split('_')
-		subject_info["code"] = code_year_sem[0]
-		subject_info["year"] = int(code_year_sem[1])
-		subject_info["semester"] = int(code_year_sem[2][-1])
-
-		title = code_title[1]  
-		subject_info["title"] = title[1:] # Remove space at start of string
-
-		# Extract id from course_id_raw
-		raw_id = e.get_attribute('href')
-		id_identifier = "Course&id="
-		id_end_indentifier = "&url="
-		id_start = raw_id.find(id_identifier) + len(id_identifier)
-		id_end = raw_id.find(id_end_indentifier)
-
-		subject_info["course_id"] = raw_id[id_start:id_end]
-		
-		subjects[subject_info["code"]] = subject_info
-
-	return subjects
-
-def getOnlineLectures(subject, date_last_indexed):
-	#	Optimise using 2nd argument to only space down required amount
-	#
 	print("Finding lectures...\n")
 
 	# settings.driver.get("https://content.lecture.unimelb.edu.au/ess/portal/section/"+subject.CODE) # Link to clean echo page
-	lectures_url = "https://app.lms.unimelb.edu.au/webapps/blackboard/content/launchLink.jsp?course_id={}&tool_id=_4009_1&tool_type=TOOL&mode=view&mode=reset".format(subject.course_id)
+	lectures_url = "https://app.lms.unimelb.edu.au/webapps/blackboard/content/launchLink.jsp?course_id={}&tool_id=_4009_1&tool_type=TOOL&mode=view&mode=reset".format(course_id)
 
 	settings.driver.get(lectures_url)
 
@@ -247,7 +207,7 @@ def getOnlineLectures(subject, date_last_indexed):
 		time = dt.time()
 		date = dt.date()
 
-		lec_new = LectureHandler.Lecture(url, date, time)
+		lec_new = {"time": time, "date": date, "url": url}
 		lectures.append(lec_new)
 
 	print("Number of lectures available: {}".format(len(lectures)))
@@ -256,3 +216,105 @@ def getOnlineLectures(subject, date_last_indexed):
 	lectures.reverse() # So earliest lectures are at beginning
 
 	return lectures
+
+def getScheduleInfoFromEchoPage(course_id):
+	print("Finding lectures...\n")
+
+	# settings.driver.get("https://content.lecture.unimelb.edu.au/ess/portal/section/"+subject.CODE) # Link to clean echo page
+	lectures_url = "https://app.lms.unimelb.edu.au/webapps/blackboard/execute/blti/launchPlacement?blti_placement_id=_42_1&content_id=_6694137_1&course_id={}".format(course_id)
+	settings.driver.get(lectures_url)
+
+	# Navigate to frame with echoes-list
+	sleep(1)
+	list_parent = LinkUtil.getLinkByClass('main-content')
+
+	# Get echoes list
+	sleep(1)
+	elements = list_parent.find_elements_by_class_name('class-row')
+
+	lectures = []
+
+	print("Getting list")
+	print("Length: {}".format(len(elements)))
+	for i, e in enumerate(elements):
+		#	Extract date and time
+
+		date_time_el = e.find_elements_by_class_name("date-time")[0]
+
+		date_str = date_time_el.find_element_by_class_name('date').get_attribute('innerText')
+		time_start_and_end_str = date_time_el.find_element_by_class_name('time').get_attribute('innerText').split('-')
+		time_start_str = time_start_and_end_str[0]
+		# time_end_str = time_start_and_end_str[1]
+
+		# date_text = e.find_element_by_class_name('date').get_attribute('innerText')
+		# time_text = e.find_element_by_class_name('time').get_attribute('innerText')
+
+		date = datetime.datetime.strptime(date_str,"%B %d, %Y").date()
+
+		time = datetime.datetime.strptime(time_start_str, "%I:%M%p").time()
+
+		#	Get url
+		open_menu_element = e.find_elements_by_xpath('//div[@class=\'media-icons centered video\']')[0]
+		open_menu_element.click()
+
+		first_download_button_element = e.find_element_by_class_name('menu-items').find_elements_by_tag_name('a')[1]
+		first_download_button_element.click()
+
+		#	Find download link on page
+			
+		cancel_download_buttons_root = LinkUtil.getLinkByXPath('//a[@class=\'modal\']') 
+
+		cancel_button_element = cancel_download_buttons_root.find_elements_by_tag_name('a')[0] 
+		download_button_element = cancel_download_buttons_root.find_elements_by_tag_name('a')[1] 
+
+		# download_link_element = LinkUtil.getLinkByXPath('//a[@class=\'btn primary medium downloadBtn\']')
+
+		url = download_link_element.get_attribute('href')
+
+		lec_new = {"time": time, "date": date, "url": url}
+		print("Lecture {}: {}\n".format(i, lec_new))
+		lectures.append(lec_new)
+
+	print("Number of lectures available: {}".format(len(lectures)))
+	assert lectures, "List of available lectures is empty! Exiting.."
+
+	lectures.reverse() # So earliest lectures are at beginning
+
+	return lectures
+	
+
+def getLmsSubjectInfo():
+	subjects = {} # each element is a list of info
+
+	#//*[@id="_4_1termCourses_noterm"]/ul/li[1]/a
+	html_list = LinkUtil.getLinkByXPath('//*[@id="_158_1termCourses_noterm"]/ul')
+
+	el_list = html_list.find_elements_by_css_selector('[target^=_top]')
+
+	for e in el_list:
+		subject_info = {}
+
+		# Extract code and title
+		code_title = e.get_attribute('innerText')
+		code_title = code_title.split(':')
+
+		code_year_sem = code_title[0].split('_')
+		subject_info["code"] = code_year_sem[0]
+		subject_info["year"] = int(code_year_sem[1])
+		subject_info["semester"] = int(code_year_sem[2][-1])
+
+		title = code_title[1]  
+		subject_info["title"] = title[1:] # Remove space at start of string
+
+		# Extract id from course_id_raw
+		raw_id = e.get_attribute('href')
+		id_identifier = "Course&id="
+		id_end_indentifier = "&url="
+		id_start = raw_id.find(id_identifier) + len(id_identifier)
+		id_end = raw_id.find(id_end_indentifier)
+
+		subject_info["course_id"] = raw_id[id_start:id_end]
+		
+		subjects[subject_info["code"]] = subject_info
+
+	return subjects

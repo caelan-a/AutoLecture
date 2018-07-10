@@ -39,6 +39,23 @@ class SubjectTile(QWidget):
 			self.shadow_anim.start()
 			self.confirm_bool = True
 
+	#	Used until this object has access to a subject object from backend
+	def setNumLecturesToWatch(self, n_lectures_to_watch):
+		self.n_lectures_to_watch = n_lectures_to_watch
+
+	def getNumLecturesToWatch(self, n_lectures_to_watch):
+		return self.n_lectures_to_watch
+
+	def setNumAssignmentsToDo(self, n_assignments_to_do):
+		self.n_assignments_to_do = n_assignments_to_do
+
+	def getNumAssignmentsToDo(self, n_assignments_to_do):
+		return self.n_assignments_to_do
+
+	#	Gets colour based on how much there is to do, eg 6 lectures is red
+	def getUrgencyColour(self, number):
+		pass
+
 	def __init__(self, title, semester, year, subject_icon, size):
 		QWidget.__init__(self)
 		
@@ -56,9 +73,10 @@ class SubjectTile(QWidget):
 		setStyleSheet(self, "subject_tile")
 
 		self.title = QLabel(title, self)
-		self.semester = QLabel("Semester " + semester, self)
-		self.year = QLabel(year, self)
-		self.year.setObjectName("year")
+		self.semester = QLabel("Semester " + str(semester), self)
+		self.year = QLabel(str(year), self)
+		self.n_lectures_to_watch = QLabel("0 Lectures to watch")
+		self.n_assignments_to_do = QLabel("1 Assignment to do")
 
 		if size == "big":
 			self.frame.setMinimumSize(BIG_TILE_SIZE[0], BIG_TILE_SIZE[1])
@@ -98,3 +116,5 @@ class SubjectTile(QWidget):
 		self.frame.setLayout(self.layout)
 
 		self.main_layout.addWidget(self.frame)
+		self.main_layout.addWidget(self.n_lectures_to_watch)
+		self.main_layout.addWidget(self.n_assignments_to_do)

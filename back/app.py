@@ -9,7 +9,7 @@ import LmsNavigator
 import download
 import pickle
 from Subject import Subject
-from SubjectSchedule import SubjectSchedule
+from SubjectSchedule import SubjectSchedule, getScheduleFromRawLectures
 
 USER_SAVE_PATH = "save\\user.pkl"
 
@@ -63,13 +63,19 @@ class AutoLectureApp():
 		else:
 			pass
 
+	#	For SetupScreen (SubjectScheduleFrame)
 	def getSubjectsToAddScheduleInfo(self):
 		for subject in self.subjects_to_add["current"]:
 			if self.user.timetable != None:
 				subject.setSubjectSchedule(self.user.timetable[subject_key])
 
 		for subject in self.subjects_to_add["past"]:
+			course_id = subject.getCourseID()
+			raw_lecture_list = LmsNavigator.getScheduleInfoFromEchoPage(course_id)
+			subject.setRawLectureList 
 			pass
+
+	#	For SetupScreen (SubjectConfirmationFrame)
 	def fillSubjectsToAdd(self, info_subjects_to_add):
 		info = info_subjects_to_add["current"]
 		for subject_key in info:
@@ -81,6 +87,7 @@ class AutoLectureApp():
 			subject = Subject(info[subject_key]["title"], info[subject_key]["semester"],info[subject_key]["year"],info[subject_key]["code"], info[subject_key]["course_id"])
 			self.subjects_to_add["past"].append(subject)
 
+	#	For SetupScreen (LoginFrame)
 	def getSubjectLMSInfo(self):
 		"""Return subjects in a dictionary of 2 elements"""
 		if self.user.raw_subject_info == None:
@@ -110,3 +117,9 @@ class AutoLectureApp():
 		self.subjects_to_add = {"current": [], "past": []} 	#	Used to store partial information when adding subjects throughout adding process, see scheduling modules, dict of past and current
 
 		self.user = User()
+		
+		# sample_course_id = "_365214_1"
+		# self.startBrowser()
+		# LmsNavigator.goToLms("caelana", "cael1998")
+		# raw_lecture_list = LmsNavigator.getScheduleInfoFromEchoPage(sample_course_id)
+		# print(raw_lecture_list)

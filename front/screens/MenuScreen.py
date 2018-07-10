@@ -1,6 +1,9 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 
+from widgets.SubjectTile import SubjectTile
+from widgets.SubjectTileSet import SubjectTileSet
+
 class MenuScreen(QWidget):
 	@Slot()
 	def goToSettings(self):
@@ -10,28 +13,28 @@ class MenuScreen(QWidget):
 		QWidget.__init__(self)
 
 		self.layout = QVBoxLayout()
-		self.hbox = QHBoxLayout()
 
-		self.layout.addStretch()
-		self.label_title = QLabel("AutoLecture")
-		self.label_title.setObjectName("setupScreenTitle")
-		self.label_title.setAlignment(Qt.AlignCenter)
-		self.layout.addWidget(self.label_title)
+		# Current subjects
+		self.current_subject_tiles = []
+		self.current_subject_tiles.append(SubjectTile("Syntax", 2, 2018, assets.icon_subject_icon, "big"))
+		self.current_subject_tiles.append(SubjectTile("Real Analysis", 2, 2018, assets.icon_subject_icon, "big"))
+		self.current_subject_tiles.append(SubjectTile("Engineering Mechanics", 2, 2018, assets.icon_subject_icon, "big"))
+		self.current_subject_tiles.append(SubjectTile("Electrical Networks", 2, 2018, assets.icon_subject_icon, "big"))
 
-		self.button_lectures = QPushButton("")
-		self.button_lectures.setObjectName('menuIcon')
-		self.button_lectures.setIcon(assets.icon_play_white)
-		self.button_lectures.setIconSize(QSize(150,150));
-		self.hbox.addWidget(self.button_lectures)
+		self.current_set = SubjectTileSet(5,assets,"big")
+		self.current_set.addSubjectTiles(self.current_subject_tiles)
 
-		self.button_settings = QPushButton("")
-		self.button_settings.setObjectName('menuIcon')
-		self.button_settings.setIcon(assets.icon_settings_white)
-		self.button_settings.setIconSize(QSize(150,150));
-		self.button_settings.clicked.connect(self.goToSettings)
-		self.hbox.addWidget(self.button_settings)
+		# Past subjects
+		self.past_subject_tiles = []
+		self.past_subject_tiles.append(SubjectTile("Phonetics", 1, 2017, assets.icon_subject_icon, "small"))
+		self.past_subject_tiles.append(SubjectTile("Engineering Mathematics", 1, 2017, assets.icon_subject_icon, "small"))
+		self.past_subject_tiles.append(SubjectTile("Quantum Physics", 2, 2017, assets.icon_subject_icon, "small"))
+		self.past_subject_tiles.append(SubjectTile("Linguistics", 2, 2017, assets.icon_subject_icon, "small"))
 
-		self.layout.addStretch()
-		self.layout.addLayout(self.hbox)
-		self.layout.addStretch()
+		self.past_set = SubjectTileSet(5, assets, "small")
+		self.past_set.addSubjectTiles(self.current_subject_tiles)
+		
+		self.label = QLabel("You have 0 lectures to watch")
+		self.layout.addWidget(self.label)
+		self.layout.addWidget(self.current_set)
 		self.setLayout(self.layout)

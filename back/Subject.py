@@ -6,6 +6,7 @@ import os.path
 import LmsNavigator
 import settings
 import LectureHandler
+from SubjectSchedule import SubjectSchedule
 
 class Subject(object):
 	def __init__(self, title, semester, year, code, course_id):
@@ -16,6 +17,8 @@ class Subject(object):
 		self.course_id = course_id
 		self.lectureHandler = []
 		self.subject_schedule = []
+
+		self.raw_lecture_list = []	#	raw lecture list from echo
 
 	def createLectureCalender(self):
 		self.lectureHandler = LectureHandler.LectureHandler(self)
@@ -28,3 +31,9 @@ class Subject(object):
 
 	def setSubjectSchedule(self):
 		pass
+
+	def setRawLectureList(self, lecture_list):
+		pass
+
+	def getCourseID(self):
+		return self.course_id
