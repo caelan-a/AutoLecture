@@ -7,6 +7,7 @@ from PySide.QtGui import *
 from front.MainWindow import Window  
 from back.app import AutoLectureApp
 
+
 # Setup backend
 backend_app = AutoLectureApp()
 
@@ -38,5 +39,6 @@ window.run(qt_app)
 8. Mobile app
 9. Notes related to each lecture
 10. test
+
 
 """

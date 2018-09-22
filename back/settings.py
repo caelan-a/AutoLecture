@@ -13,8 +13,8 @@ def startBrowser():
 	options.add_argument('headless')
 	options.add_argument('--log-level=3')
 	options.add_argument("--window-size=1920,1080")
-	# driver = webdriver.Chrome(chrome_options=options)
-	driver = webdriver.Chrome()
+	driver = webdriver.Chrome(chrome_options=options)
+	# driver = webdriver.Chrome()
 
 def closeBrowser():
 	driver.quit()
