@@ -8,7 +8,7 @@ It's goals were to:
 
 This project went for a number of months before the lecture capture system was unexpectedly upgraded. This lessened the need for this software and it was used subsequently only for certain modules.
 
-![Image of Yaktocat](https://octodex.github.com/images/studynow.png)
+![Image of Yaktocat](https://github.com/caelan-a/AutoLecture/blob/master/autolec.jpg)
 
 
 
